@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://520cxy.github.io</id>
+    <title>blog of the oier who is cool</title>
+    <updated>2021-03-31T11:43:38.096Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://520cxy.github.io"/>
+    <link rel="self" href="https://520cxy.github.io/atom.xml"/>
+    <subtitle>我会化作人间的风雨陪在你身边 ——《大鱼海棠》</subtitle>
+    <logo>https://520cxy.github.io/images/avatar.png</logo>
+    <icon>https://520cxy.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, blog of the oier who is cool</rights>
+</feed>
