@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-03-31T11:50:08.806Z</updated>
+    <updated>2021-03-31T11:54:40.277Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,4 +10,19 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, blog of the oier who is cool</rights>
+    <entry>
+        <title type="html"><![CDATA[关于Me]]></title>
+        <id>https://520cxy.github.io/post/about/</id>
+        <link href="https://520cxy.github.io/post/about/">
+        </link>
+        <updated>2019-01-25T11:09:48.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>欢迎来到我的小站呀，很高兴遇见你！</p>
+</blockquote>
+<h2 id="欢迎和我交朋友">欢迎和我交朋友！</h2>
+<h2 id="博猪是zj的一枚蒟蒻~~">👨‍💻 博猪是ZJ的一枚蒟蒻~~</h2>
+<h2 id="喜欢篮球篮球plmm">喜欢篮球，篮球，<s>plmm</s></h2>
+<h2 id="你谷"><a href="https://www.luogu.com.cn/user/228866">你谷</a> qq 号：2949287507</h2>
+]]></content>
+    </entry>
 </feed>
