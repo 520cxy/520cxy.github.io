@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-03-31T12:17:43.870Z</updated>
+    <updated>2021-03-31T13:21:54.341Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,81 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, blog of the oier who is cool</rights>
+    <entry>
+        <title type="html"><![CDATA[Re:树链剖分的起源之战]]></title>
+        <id>https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/</id>
+        <link href="https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/">
+        </link>
+        <updated>2021-03-31T12:26:49.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=6><strong>哲学</strong>三问</font><br>
+<font size=4 >一.树链剖分是啥？</font><br>
+<font color=red>树链，就是树上的路径。剖分，就是把路径分类为重链和轻链。</font><br>
+<font size=4 >二.树链剖分用来干啥？</font></p>
+<blockquote>
+<p>有的人说：“我会树上倍增，我怕谁？”，没错，你怕的就是树链剖分。<br>
+意思是：树上倍增能做的，树链剖分都能做；树链剖分能做的，树上倍增不一定能做<s>就像那啥，树状数组能做的线段树一定能做，线段树能做的，树状数组不一定能做</s>。树上倍增虽然能求树上区间极值或和，但一旦有树上边或点权值修改的操作，您就爆dan了这时我们需要一个新的算法来补上我们的树上倍增操作的漏洞，没错，就是<strong>树链剖分</strong>！没错！你学了它<s>一定</s>不会后悔！!</p>
+</blockquote>
+<p><a href="https://edge-bird.github.io/2021/01/30/Binary%20Index%20Tree/">树状数组</a> &lt;--- 不会点这里，<s>营销大鸟</s>的blog<br>
+<font color=red>在一棵树上进行路径的修改、求极值、求和”</font>乍一看只要线段树就能轻松解决，实际上，仅凭线段树是不能搞定它的。我们需要用到一种<s>貌似</s>高级的复杂算法—<strong>树链剖分</strong></p>
+<p><font size=4 >三.树链剖分咋用？</font><br>
+如果要使用树链剖分，概念滴你们滴需要懂滴</p>
+<blockquote>
+<p>对于一个节点，在它的所有儿子中，size（子树大小）最大的一个就是<strong>重儿子</strong>，其余的都是<strong>轻儿子</strong>。重儿子所在的树链叫做<strong>重链</strong>，其余叫做<strong>轻链</strong>。</p>
+</blockquote>
+<p><font color=blue>e.g:</font><img src="https://520cxy.github.io/post-images/1617195153603.png" alt="" loading="lazy"><br>
+<s>头上有绿</s>被涂上颜色的是一条重链，这个栗子里有五条重链，分别为：<br>
+1---2---6---3<br>
+5<br>
+3<br>
+4---7<br>
+8</p>
+<p>那么，我们需要维护什么？</p>
+<blockquote>
+<p>tree数组，表示整棵树上的信息<br>
+tree[i].depth表示i的的深度<br>
+tree[i].top表示i所在的重链顶端的结点<br>
+tree[i].father表示i点的父亲<br>
+tree[i].key表示i点的权值<br>
+tree[i].To_tree表示节点i在线段树中的位置<br>
+tree[i].size表示以i为根的子树大小<br>
+tree[i].heavy_son表示i节点的重儿子<br>
+To_num[i]表示线段树中的i号节点对应的是原树中的位置<br>
+//鉴于我是个蒟蒻，这里之讲用数据结构线段树维护</p>
+</blockquote>
+<p><font color=green size=4><strong>CODE:</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1617195521550.png" alt="" loading="lazy"></p>
+<p><font color=green size=4><strong>人工栈板CODE:</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1617195745240.png" alt="" loading="lazy"></p>
+<p><font size=4 >其他运用啦</font><br>
+<strong>LCA查询</strong><br>
+比线段树牛bi多了，<s>代码也难的一批</s><br>
+<strong>STEPS：</strong></p>
+<blockquote>
+<p>1.我们查看当前tree[x].top是否与tree[y].top相等<br>
+2.如果不相等，那么就将深度较大的(假设为x)跳到当前重链顶端的父亲。<br>
+3.一直这样迭代，直到它们top相等为止。<br>
+4.如果它们的top相等，有两种情况：<br>
+①x=y<br>
+②y是x的祖先（或x是y的祖先）<br>
+<font color=red>那么LCA就是深度较小的那一个！</font></p>
+</blockquote>
+<p><font color=green size=4><strong>CODE:</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1617196218239.png" alt="" loading="lazy"></p>
+<p><strong>区间极值或和查询</strong><br>
+在求LCA可以顺带操作一下，具体还是康代码吧::<br>
+<font color=green size=4><strong>CODE:</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1617196594474.png" alt="" loading="lazy"></p>
+<p><font size=4 ><strong>复杂度证明</strong></font><br>
+<font color=red>------摘自OI Wiki, 因为我不会<font><br>
+<img src="https://520cxy.github.io/post-images/1617196730978.png" alt="" loading="lazy"></p>
+<p><font size=4 ><strong>该你大战技术了！！！</strong></font><br>
+<a href="https://www.luogu.com.cn/problem/P3258">luogu P3258[JLOI2014]松鼠的新家</a><br>
+<a href="https://www.luogu.com.cn/problem/P3178">luogu P3178[HAOI2015]树上操作</a><br>
+<a href="https://www.luogu.com.cn/problem/P3384">luogu P3384【模板】树链剖分</a><br>
+<a href="https://www.luogu.com.cn/problem/P2486">P2486 [SDOI2011]染色</a><br>
+<a href="https://www.luogu.com.cn/problem/P3313">P3313 [SDOI2014]旅行</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于Me]]></title>
         <id>https://520cxy.github.io/post/about/</id>
