@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-03-31T23:55:16.432Z</updated>
+    <updated>2021-04-01T05:06:16.272Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -33,7 +33,7 @@
 </blockquote>
 <p><font color=blue>e.g:</font><img src="https://520cxy.github.io/post-images/1617195153603.png" alt="" loading="lazy"><br>
 <s>头上有绿</s>被涂上颜色的是一条重链，这个栗子里有五条重链，分别为：<br>
-1---2---6---3<br>
+1---2---6---9<br>
 5<br>
 3<br>
 4---7<br>
