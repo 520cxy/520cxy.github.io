@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-04-02T02:28:29.866Z</updated>
+    <updated>2021-04-02T02:36:20.921Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -23,10 +23,9 @@
 <p><font size=5>T3 下取整</font><br>
 只要按照题目描述的进行操作之后，存下来的数和原数比较，反正我是做了一遍<font color=red>数学的逆运算</font>就切了唔</p>
 <p><font size=5>T4 整除</font><br>
-思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo></mrow><annotation encoding="application/x-tex">\lbrace</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∀</mi></mrow><annotation encoding="application/x-tex">\forall</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">∀</span></span></span></span>x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∈</mo></mrow><annotation encoding="application/x-tex">\in</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span></span></span></span> [i, j] | s[x]%p == 0<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>}</mo></mrow><annotation encoding="application/x-tex">\rbrace</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">}</span></span></span></span></font><br>
+思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="https://520cxy.github.io/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
 还有就是要注意p=2, 5的情况需要特判，由于这俩很好判断，<font color=red>只要末尾上的数可以整除那么前面一系列数都能取</font></p>
 <p><font size=5>T5 机器人</font><br>
-也是思维题——xhf 大佬<br>
 首先这是一个DAG模型，一个机器的激活可以引起另一个的激活，这样我们根据某一机器人向能够引起爆炸的另外一个机器人连边便可以得到一张<font color=red>有向无环图</font><br>
 事实上，有向无环图我们很难建立而且很难在上面完成答案的计算；<br>
 因此题解中有一个很妙的思路：</p>
