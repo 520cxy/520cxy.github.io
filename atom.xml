@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-04-02T03:22:00.151Z</updated>
+    <updated>2021-04-02T03:30:56.428Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -25,7 +25,7 @@
 <p><font size=5>T4 整除</font><br>
 原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_e">ABC158 E - Divisible Substring</a><br>
 思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="https://520cxy.github.io/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
-<font color=green>所以在区间[i<sub>j]中的数都能取，之后统计i</sub>j中所有区间长度的区间个数累计加起来</font><br>
+<font color=green>所以在区间[i, j]中的数都能取，之后统计i~j中所有区间长度的区间个数累计加起来</font><br>
 还有就是要注意p=2, 5的情况需要特判，由于这俩很好判断，<font color=red>只要末尾上的数可以整除那么前面一系列数都能取</font></p>
 <p><font size=5>T5 机器人</font><br>
 原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_f">ABC158 F - Removing Robots</a><br>
