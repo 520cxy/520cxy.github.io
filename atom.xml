@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>blog of the oier who is cool</title>
-    <updated>2021-04-05T07:44:51.278Z</updated>
+    <updated>2021-04-05T07:49:04.299Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://520cxy.github.io/post/45-solution/">
         </link>
         <updated>2021-04-05T06:46:08.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://520cxy.github.io/post-images/1617608237442.jpg" alt="" loading="lazy"><font size=6>T1:纯粹理性批判</font><br>
+        <content type="html"><![CDATA[<p><font size=6>T1:纯粹理性批判</font><br>
 <font size=4>题目描述：</font><br>
 <img src="https://520cxy.github.io/post-images/1617605412575.png" alt="" loading="lazy"><br>
 样例输入：10<br>
