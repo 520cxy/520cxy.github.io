@@ -50,44 +50,50 @@
         <main id="main" class="site-main" role="main">
             <article id="post-1270" class="post-1270 post type-post status-publish format-standard hentry category-90 category-129 tag-149">
                 <header class="entry-header">
-                    <h1 class="entry-title">4.2 Solution</h1>
-                    <p class="entry-census">发布于 2021-04-02</p>
+                    <h1 class="entry-title">4.5 Solution</h1>
+                    <p class="entry-census">发布于 2021-04-05</p>
                     <hr>
                 </header>
                 <div class="neko">
-                    <p><font size=5>T1 生成字符串</font><br>
-在模拟的时候发现，如果他给出了<font color=red>连续的n个T<sub>1</sub>操作，就是翻转n%2次</font>，而串首串尾加字符，如果加了以后翻转，就等价于反着加，我们只需要记下每次操作填补的位置最后进行操作就行；</p>
-<p><font size=5>T2 字符串查询</font><br>
-据dalao们说是线段树和树状数组的维护，<s>我也看出来了</s>，但是我没<s>马</s>码；</p>
-<p><font size=5>T3 下取整</font><br>
-只要按照题目描述的进行操作之后，存下来的数和原数比较，反正我是做了一遍<font color=red>数学的逆运算</font>就切了唔</p>
-<p><font size=5>T4 整除</font><br>
-原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_e">ABC158 E - Divisible Substring</a><br>
-思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="https://520cxy.github.io/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
-<font color=green>所以在区间[i, j]中的数都能取，之后统计i~j中所有区间长度的区间个数累计加起来</font><br>
-还有就是要注意p=2, 5的情况需要特判，由于这俩很好判断，<font color=red>只要末尾上的数可以整除那么前面一系列数都能取</font></p>
-<p><font size=5>T5 机器人</font><br>
-原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_f">ABC158 F - Removing Robots</a><br>
-首先这是一个DAG模型，一个机器的激活可以引起另一个的激活，这样我们根据某一机器人向能够引起爆炸的另外一个机器人连边便可以得到一张<font color=red>有向无环图</font><br>
-事实上，有向无环图我们很难建立而且很难在上面完成答案的计算；<br>
-因此题解中有一个很妙的思路：</p>
+                    <p><img src="https://520cxy.github.io/post-images/1617608237442.jpg" alt="" loading="lazy"><font size=6>T1:纯粹理性批判</font><br>
+<font size=4>题目描述：</font><br>
+<img src="https://520cxy.github.io/post-images/1617605412575.png" alt="" loading="lazy"><br>
+样例输入：10<br>
+样例输出：21<br>
+<font size=4>方法：</font><br>
+我们将所有a, b的情况分为三类 ：<br>
+<font color=green>1. a = b 时</font>， 显然不可能(自己举栗子)<br>
+<font color=green>2. a &gt; b 时</font>， 此时<font color=blue>b/a = 0</font> 要满足a%b = 0， 则<font color=red>所求二元组为b是a的因子</font><br>
+<font color=green>3. a &lt; b 时</font>，此时<font color=blue>a%b = a</font> 要满足b/a=a， 则<font color=red>所求二元组数为区间数量a<sup>2</sup> &lt; b &lt; a<sup>2</sup>+a</font><br>
+然后统计答案</p>
+<p><font size=6>T2:自我救赎</font><br>
+<font size=4>题目描述：</font><br>
+<img src="https://520cxy.github.io/post-images/1617607036161.png" alt="" loading="lazy"><br>
+样例输入:<br>
+5<br>
+5 4 3 2 1<br>
+样例输出:<br>
+4<br>
+<font size=4>方法：</font></p>
 <blockquote>
-<p>将DAG中多余的边去掉，使其变成一个树结构<br>
-我们将<strong>多于的边去掉首先需要保证的是不会影响答案的计算</strong></p>
+<p>数据太水O(n<sup>2</sup>)暴力枚举，只要往后扫，一碰到比它大的就++，break，直接过</p>
 </blockquote>
-<p>例如(A,B),(B,C),(A,C)这三条边中我们完全可以将(A,C)去掉，因为这两条路径是等价的。<br>
-因此我们对于每一节点，只需要<font color=red>向离节点最左边位置的节点连边</font>即可。<br>
-在程序实现上，我们可以使用优先队列/栈来维护：<br>
-我们反向考虑，对于没有受到连边的节点放到一个容器使得容器的顶部位置最小。<br>
-（为了能更容易的得到连边）<br>
-若当前可以向容器的顶部连边，则连边并弹出顶部，直到不能连边为止。<br>
-<font color=green>最优我们得到了一个森林结构，我们以每一个根为起点做树形DP。<br>
-DP很很好写——xhf dalao</font><br>
-我们设f[i]表示以i为根子树的选择方案。<br>
-当i启动时，子树都需要启动，方案为1。<br>
-当i不启动时，方案为子树的f值得积<br>
-最后的答案是森林中每一个根的f值之积。<br>
-<img src="https://520cxy.github.io/post-images/1617330304397.png" alt="" loading="lazy"></p>
+<p><font size=6>T4:失乐园</font><br>
+<font size=4>题目描述：</font><br>
+<img src="https://520cxy.github.io/post-images/1617607354812.png" alt="" loading="lazy"><br>
+样例输入：<br>
+8<br>
+20152016<br>
+样例输出：<br>
+4<br>
+样例解释：<br>
+”20152016” = ”20152016”<br>
+”20152016” = ”20” + ”152016”<br>
+”20152016” = ”201” + ”52016”<br>
+”20152016” = ”2015” + ”2016”</p>
+<p><font size=4>方法：</font><br>
+<font color=red>区间DP</font>，<br>
+但是要先做一个LCP（最长公共前缀）优化<s>我不会</s></p>
 
                 </div>
             </article>
@@ -97,20 +103,14 @@ DP很很好写——xhf dalao</font><br>
         <div class="mdui-container">
             <div class="mdui-row">
                 
-                <a href="https://520cxy.github.io/post/45-solution/" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
-                    <div class="doc-footer-nav-text">
-                        <i class="mdui-icon material-icons">arrow_back</i>
-                        <span class="doc-footer-nav-direction mdui-hidden-xs-down">上一篇文章</span>
-                        <div class="doc-footer-nav-chapter mdui-hidden-xs-down">4.5 Solution</div>
-                    </div>
-                </a>
+                <div class="mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left"></div>
                 
                 
-                <a href="https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
+                <a href="https://520cxy.github.io/post/42-solution/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                     <div class="doc-footer-nav-text">
                         <i class="mdui-icon material-icons">arrow_forward</i>
                         <span class="doc-footer-nav-direction">下一篇文章</span>
-                        <div class="doc-footer-nav-chapter">Re:树链剖分的起源之战</div>
+                        <div class="doc-footer-nav-chapter">4.2 Solution</div>
                     </div>
                 </a>
                 
