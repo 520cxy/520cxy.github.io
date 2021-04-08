@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
-    <title>blog of the oier who is cool</title>
-    <updated>2021-04-05T10:38:37.116Z</updated>
+    <title>LL.的小窝</title>
+    <updated>2021-04-08T05:13:13.830Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
     <subtitle>共道人间惆怅事,不知今夕是何年 ——《周秦行纪》</subtitle>
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, blog of the oier who is cool</rights>
+    <rights>All rights reserved 2021, LL.的小窝</rights>
     <entry>
         <title type="html"><![CDATA[4.5 Solution]]></title>
         <id>https://520cxy.github.io/post/45-solution/</id>
