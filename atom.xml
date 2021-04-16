@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-04-08T05:33:13.814Z</updated>
+    <updated>2021-04-16T06:59:12.258Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,117 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[原根代码及优化]]></title>
+        <id>https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/</id>
+        <link href="https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/">
+        </link>
+        <updated>2021-04-13T10:59:10.000Z</updated>
+        <content type="html"><![CDATA[<p><font color=green size=5><strong>CODE</strong></font></p>
+<pre><code class="language-c++">#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+
+typedef long long ll;
+const int N = 2e5+1;
+
+int q[N];
+inline int phi(register int n){
+    register int zc = n, all = sqrt(n);
+    for(register int i = 2;i &lt;= all; ++i){
+		if(n%i) continue;
+    	zc = zc/i*(i-1);
+    	while(n%i == 0) n /= i;
+    }
+    if(n &gt; 1) zc = zc/n*(n-1);
+    return zc;
+}
+
+inline int pow(register int x,const int &amp;y,const int &amp;mod){
+	register int res = 1;
+	for(register int i = 1;i &lt;= y;i &lt;&lt;= 1, x = (ll)x*x%mod)
+		if(i &amp; y) res = (ll)res*x%mod;
+	return res;
+}
+
+inline int G(const int &amp;m){	
+	const int PHI = phi(m);
+	q[0] = 0;
+	for(register int i = 2;i &lt; PHI; ++i)
+		if(PHI%i == 0) q[++ q[0]] = i;
+	for(register int g = 2;; ++g){
+		bool fla = true;
+		if(pow(g, PHI, m) != 1) continue;
+		for(register int i = 1;i &lt;= q[0]; ++i)
+			if(pow(g, q[i], m) == 1){
+				fla = false;
+				break;
+			}
+		if(fla) return g;
+	}
+}
+
+int m;
+signed main(int argc, char const* argv[]){
+	scanf(&quot;%d&quot;, &amp;m);
+    printf(&quot;%d&quot;, G(m));
+    return 0;
+}
+</code></pre>
+<p>这是最常用的方法<br>
+如果你还想要更优的复杂度：<br>
+删去</p>
+<pre><code class="language-c++">q[0] = 0;
+	for(register int i = 2;i &lt; PHI; ++i)
+		if(PHI%i == 0) q[++ q[0]] = i;
+</code></pre>
+<p>加上</p>
+<pre><code class="language-c++">q[0] = 0;
+const int limit = sqrt(PHI);
+for(register int i = 2;i &lt;= limit; ++i)
+    if(PHI % i == 0){
+        q[++ q[0]] = i;
+        if(i*i != PHI) q[++ q[0]] = PHI/i;
+    }
+</code></pre>
+<p>枚举时间就为O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>m</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">m</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span>) + O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>m</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">m</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span>)*O(logm)*O(g)</p>
+<p>还有更快的！！！<br>
+现在发现瓶颈在枚举的数量上，其实还可以优化<br>
+有一个结论：设φ ( m ) = p<sub>1</sub><sup>a<sub>1</sub></sup> * p<sub>2</sub><sup>a<sub>2</sub></sup> * ... * p<sub>n</sub><sup>a<sub>n</sub></sup><br>
+那么只需要判断：<img src="https://520cxy.github.io/post-images/1618471759699.png" alt="" loading="lazy"><br>
+如果有一个条件满足，那么当前的g一定不是原根如果对于一个φ(m)的因数b满足了条件，那么在这些数当中一定至少有一个也满足这个条件，然后就好啦<br>
+代码依然用替换来给出，替换上文提到的地方</p>
+<pre><code class="language-c++">q[0]=0;
+const int limit=sqrt(PHI);
+int zc=PHI;
+for(register int i=2;i&lt;=limit;i++)
+	if(zc%i==0){
+		q[++q[0]]=PHI/i;
+		while(zc%i==0)zc/=i;
+	}
+if(zc&gt;1)zc=q[++q[0]]=PHI/zc;
+</code></pre>
+<p>时间就成O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>m</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">m</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span>)+O(log<sup>2</sup>m)*O(g)<br>
+完结撒花</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[4.5 Solution]]></title>
         <id>https://520cxy.github.io/post/45-solution/</id>
@@ -96,6 +207,54 @@ DP很很好写——xhf dalao</font><br>
 当i不启动时，方案为子树的f值得积<br>
 最后的答案是森林中每一个根的f值之积。<br>
 <img src="https://520cxy.github.io/post-images/1617330304397.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些数学芝士]]></title>
+        <id>https://520cxy.github.io/post/yi-xie-shu-xue-zhi-shi/</id>
+        <link href="https://520cxy.github.io/post/yi-xie-shu-xue-zhi-shi/">
+        </link>
+        <updated>2021-04-01T06:34:13.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=6 color=red></font><br>
+<font size=6 color=purple>前置芝士</font></p>
+<blockquote>
+<p>1.阶：若a, p互质, 使a<sup>l</sup> % p==1,的最小正整数l定义为a模p意义下的阶, 记作ord<sub>p</sub> a；<br>
+2.欧拉函数：给出一个正整数x，函数值np定义为0~x内与x互质的数的个数，记作φ(x)=n<br>
+3.欧拉定理：a<sup>φ(p)</sup> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span> 1(mod p)</p>
+</blockquote>
+<p><font size=6 color=red >原根：</font><br>
+<font size=4 color=blue>定义：</font></p>
+<blockquote>
+<p>那么<font color=red>若ord<sub>p</sub>a=φ(p), 则称a是模p意义下的原根，归根到底就是g<sup>(P-1)</sup> = 1 (mod P)当且仅当指数为P-1的时候成立。(这里P是素数)。</font></p>
+</blockquote>
+<p><font size=4 color=blue>求法:</font><br>
+1.<strong>暴力求解</strong>：<br>
+求n的原根时，由于原根都比较小，所以我们可以将原根g从2开始枚举，判断ord<sub>n</sub> g == φ(n)?代码就不放了<br>
+2.<strong>稍快的方法</strong>：<br>
+上一个暴力的复杂度就是φ(m)*log(m)*O(g)，笑死了，在大质数的时候完全跑不动，这是oiers所不能接受的<s>要快！</s>。<br>
+容易发现：我们在枚举g的时候只要枚举与m互质的数，若不互质，那么一定不满足一一对应的条件<br>
+不过很多情况下我们要求的都是一个质数的原根，所以这个优化不常用（噗呲<br>
+3.<strong>更快的方法！</strong><br>
+在上面的代码中枚举i时发现：i不是每个都有用的。给出一个<s>玄学的</s>结论：<font color=red>枚举i只需要枚举φ(m)的因数就好了</font>证明：不会，自己问度娘。<br>
+代码：在专篇里<br>
+一般这个方法就够了复杂度就O(m)+O( m)∗O(logm)∗O(g)<br>
+还有更优化方法，也在专篇里，这里就不放了，内容有点小多TwT</p>
+<p><font size=6 color=red>扩展欧拉定理：</font><br>
+<font color=green><s>oiers</s>我从来都只记结论，不会证明。确信</font><br>
+<a href="https://www.luogu.com.cn/problem/P5091">例题</a><br>
+求a<sup>c</sup> mod m<br>
+显然，由于m和c会非常大，一般方法肯定不行<br>
+于是，扩展欧拉定理诞生了！！！<br>
+<font color=red>若gcd(a, m) == 1</font> ，即底数与模数互质时，根据欧拉定理<br>
+<img src="https://520cxy.github.io/post-images/1618299104331.png" alt="" loading="lazy"><br>
+<font color=red>若gcd(a, m) != 1 &amp;&amp; c&lt;φ(m)</font>，<s>根据扩展欧拉定理</s><br>
+<img src="https://520cxy.github.io/post-images/1618299216215.png" alt="" loading="lazy"><br>
+<font color=red>若gcd(a, m) != 1 &amp;&amp; c≥φ(m)时</font> 根据扩展欧拉定理：<br>
+<img src="https://520cxy.github.io/post-images/1618299283790.png" alt="" loading="lazy"><br>
+那么：<font size=4 color=green>馬媽再也不用担心指数爆炸啦，因为指数也能取模啦！！！</font></p>
+<p><font size=6 color=red>二次剩余和N次剩余</font><br>
+<font size=5 color=blue>二次剩余</font><br>
+<a href="https://www.luogu.com.cn/problem/P5491">例题</a></p>
 ]]></content>
     </entry>
     <entry>
