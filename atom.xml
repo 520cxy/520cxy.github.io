@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-04-22T05:24:56.662Z</updated>
+    <updated>2021-04-22T05:31:42.244Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -53,72 +53,15 @@
         <link href="https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/">
         </link>
         <updated>2021-04-13T10:59:10.000Z</updated>
-        <content type="html"><![CDATA[<p><font color=green size=5><strong>CODE</strong></font></p>
-<pre><code class="language-c++">#include&lt;cstdio&gt;
-#include&lt;cmath&gt;
-
-typedef long long ll;
-const int N = 2e5+1;
-
-int q[N];
-inline int phi(register int n){
-    register int zc = n, all = sqrt(n);
-    for(register int i = 2;i &lt;= all; ++i){
-		if(n%i) continue;
-    	zc = zc/i*(i-1);
-    	while(n%i == 0) n /= i;
-    }
-    if(n &gt; 1) zc = zc/n*(n-1);
-    return zc;
-}
-
-inline int pow(register int x,const int &amp;y,const int &amp;mod){
-	register int res = 1;
-	for(register int i = 1;i &lt;= y;i &lt;&lt;= 1, x = (ll)x*x%mod)
-		if(i &amp; y) res = (ll)res*x%mod;
-	return res;
-}
-
-inline int G(const int &amp;m){	
-	const int PHI = phi(m);
-	q[0] = 0;
-	for(register int i = 2;i &lt; PHI; ++i)
-		if(PHI%i == 0) q[++ q[0]] = i;
-	for(register int g = 2;; ++g){
-		bool fla = true;
-		if(pow(g, PHI, m) != 1) continue;
-		for(register int i = 1;i &lt;= q[0]; ++i)
-			if(pow(g, q[i], m) == 1){
-				fla = false;
-				break;
-			}
-		if(fla) return g;
-	}
-}
-
-int m;
-signed main(int argc, char const* argv[]){
-	scanf(&quot;%d&quot;, &amp;m);
-    printf(&quot;%d&quot;, G(m));
-    return 0;
-}
-</code></pre>
-<p>这是最常用的方法<br>
+        <content type="html"><![CDATA[<p><font color=green size=5><strong>CODE</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1619069324790.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1619069332113.png" alt="" loading="lazy"><br>
+这是最常用的方法<br>
 如果你还想要更优的复杂度：<br>
-删去</p>
-<pre><code class="language-c++">q[0] = 0;
-	for(register int i = 2;i &lt; PHI; ++i)
-		if(PHI%i == 0) q[++ q[0]] = i;
-</code></pre>
-<p>加上</p>
-<pre><code class="language-c++">q[0] = 0;
-const int limit = sqrt(PHI);
-for(register int i = 2;i &lt;= limit; ++i)
-    if(PHI % i == 0){
-        q[++ q[0]] = i;
-        if(i*i != PHI) q[++ q[0]] = PHI/i;
-    }
-</code></pre>
+删去<br>
+<img src="https://520cxy.github.io/post-images/1619069374435.png" alt="" loading="lazy"><br>
+加上<br>
+<img src="https://520cxy.github.io/post-images/1619069410903.png" alt="" loading="lazy"></p>
 <p>枚举时间就为O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>m</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">m</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
 -10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
 -50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
@@ -137,24 +80,9 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 有一个结论：设φ ( m ) = p<sub>1</sub><sup>a<sub>1</sub></sup> * p<sub>2</sub><sup>a<sub>2</sub></sup> * ... * p<sub>n</sub><sup>a<sub>n</sub></sup><br>
 那么只需要判断：<img src="https://520cxy.github.io/post-images/1618471759699.png" alt="" loading="lazy"><br>
 如果有一个条件满足，那么当前的g一定不是原根如果对于一个φ(m)的因数b满足了条件，那么在这些数当中一定至少有一个也满足这个条件，然后就好啦<br>
-代码依然用替换来给出，替换上文提到的地方</p>
-<pre><code class="language-c++">q[0]=0;
-const int limit=sqrt(PHI);
-int zc=PHI;
-for(register int i=2;i&lt;=limit;i++)
-	if(zc%i==0){
-		q[++q[0]]=PHI/i;
-		while(zc%i==0)zc/=i;
-	}
-if(zc&gt;1)zc=q[++q[0]]=PHI/zc;
-</code></pre>
-<p>时间就成O(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>m</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">m</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
--10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
--50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
-35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
--221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
-s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
-s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span>)+O(log<sup>2</sup>m)*O(g)<br>
+代码依然用替换来给出，替换上文提到的地方<br>
+<img src="https://520cxy.github.io/post-images/1619069458700.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1619069496529.png" alt="" loading="lazy"><br>
 完结撒花</p>
 ]]></content>
     </entry>
