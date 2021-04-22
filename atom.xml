@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-04-16T07:08:42.258Z</updated>
+    <updated>2021-04-22T05:16:51.791Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[DP分析]]></title>
+        <id>https://520cxy.github.io/post/dp-fen-xi/</id>
+        <link href="https://520cxy.github.io/post/dp-fen-xi/">
+        </link>
+        <updated>2021-04-19T05:43:59.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=6 color=red>1.为什么做dp要分析：</font><br>
+比如，我们在计算123x456时，会使用竖式计算<s>你牛你口算</s>，<br>
+<img src="https://520cxy.github.io/post-images/1618811515575.png" alt="" loading="lazy"><br>
+但是要是我们口算234x567，对于我这种蒟蒻肯定是很困难的。<br>
+那么做dp题目的时候也一样，很多时候我们做dp题目喜欢干瞪眼看， 确信。然后就空想，不动笔不动纸，那么这样情况下就白白给自己增加了很多难度。<font color=green>那么dp分析法，就是相当于乘法列竖式一样的一个使解决问题思路清晰的方式</font></p>
+<p><font size=6 color=red>2.核心</font><br>
+<font color=red>核心就是从集合的角度来分析dp问题</font><br>
+回想我们之前做过的dp问题， 我们发现都是<font color=red>有限集内最优化、最值问题</font><br>
+由于大多问题集内元素个数都为指数级，所以枚举运算起来的时间复杂度很高，因此我们要用dp优化</p>
+<p><font color=red size=6>3.为什么dp可以优化这些问题</font><br>
+<font color=green>dp过程中，要经历两个阶段</font><br>
+<font color=blue size=5>阶段一：化零为整，即状态表示</font><br>
+我们每次在处理问题时，不是一个方案一个方案，一个元素一个元素枚举，而是每次枚举一堆元素、枚举一个子集、枚举一类东西， 就是<font color=red>把一些有着相似性质的东西化为一个子集，用某个状态来表示， 就是化零为整的过程</font>。</p>
+<p><font color=green>状态表示里我们一般要从两个角度分析</font>，，<br>
+<font size=4 color=purple>第一个角度：</font><br>
+我们的状态，比如f[i]，要考虑f[i]表示的是哪个集合，就是集合是什么。那么这个集合一般表述的方式就是：<font color=red>所有满足XXX条件的方案的集合。</font>正因为f[i]表示的是一类东西，所以枚举f[i]可以优化</p>
+<p><font size=4 color=purple>第二个角度：</font><br>
+第二个要考虑的就是f[i]虽然表示的是一个集合，但是存入数组的是一个数字或bool值。那么<font color=red>这个数和这个集合的关系，我们称为属性</font>，说白了就是我们这个集合存的是什么东西，<font color="#00dddd">属性一般有三种：maxn，minn，count</font></p>
+<p><font color=blue size=5>阶段二：化整为零， 即状态计算</font><br>
+与阶段一相反，这个等等举例。那么怎么去做？<font color=red>先看f[i]表示的所有状态是什么，然后把整个状态里看成一个集合，那么求f[i]就需要把整个集合划分为若干个子集。</font><br>
+<img src="https://520cxy.github.io/post-images/1618814570057.png" alt="" loading="lazy"><br>
+这些子集一般又符合两个原则；<br>
+<font color=pink>原则一，不重复：</font>就是每个元素是单独属于其中一个子集；<br>
+<font color=pink>原则二，不遗漏：</font>就是所有子集并集的元素一定把f[i]集合中所有元素都包含了。<br>
+这时我们要求f[i]就是要求每个子集的值。<font color="#00dddd">比如我们现在f[i]的属性是最大值，那么整个集合最大值是什么，就是我们每个子集的最大值再取一个最大值；如果f[i]的属性是数量，那么整个集合的数量就是所有子集的数量之和。</font><br>
+所以我们把<font color=red>整个集合的问题划分为若干个子集的小问题，我们去处理每个子集，再把每个子集计算后的结果整理得出f[i]的值，就是一个化整为零的过程</font>；<br>
+有个要注意的地方，就是上面子集划分的两个原则，并不是一定所以情况下都要满足，首先不遗漏很清楚，要满足的，<font color=red>但是不重复需要注意：当我们求数量的时候，我们必须要满足不重复。但是当我们求最值的时候，其实可以重复，这点利用传递性很好理解，就是计算多了。</font></p>
+<p>然后集合划分，我们一般也有个套路，我们一般是怎么去划分这个集合呢？<br>
+<font color=red>划分依据：找最后一个不同点。</font></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[原根代码及优化]]></title>
         <id>https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/</id>
