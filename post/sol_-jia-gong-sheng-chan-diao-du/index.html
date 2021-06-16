@@ -97,6 +97,15 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 用f<sub>2</sub>表示当前已完成的零件在第二台机器加工所用的时间，用bestf表示当前找到的最优加工方案的完成时间。显然，继续向深处搜索时，f<sub>2</sub>不会减少，只会增加。因此当f<sub>2</sub>⩾bestf时，就没有继续向深处搜索的必要。限界条件可以描述为：f<sub>2</sub>&lt;bestf, f<sub>2</sub>的初值为0，bestf的初值为无穷大。<br>
 ● <font color=black>搜索过程</font><br>
 扩展结点沿着某个分支扩展时需要判断限界条件，如果满足，就进入深一层继续搜索；如果不满足，就剪掉该分支。搜索到叶子结点时，就找到当前最优解。搜索直到全部的活结点变成死节点为止。</p>
+<p><font size=6 color=blue>3.完美图解</font><br>
+例子跟一开始的一个鸭子，现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6。f<sub>1</sub>表示当前第一台机器上加工的完成时间，f<sub>2</sub>表示当前第二台机器上加工的完成时间。<br>
+<font size=4 color=brown>（1）开始搜索第一层(t=1)</font><br>
+扩展A结点的分支x<sub>1</sub>=1,f<sub>2</sub>=5,bestf的初值为无穷大，f<sub>2</sub>&lt; bestf，满足限界条件，令x[1]=1，生成B结点<br>
+<img src="https://520cxy.github.io/post-images/1623803034925.png" alt="" loading="lazy"><br>
+<font size=4 color=brown>（2）扩展B结点(t=2)</font><br>
+扩展B结点的分支x<sub>2</sub>=2, f<sub>2</sub>=8,bestf初值为无穷大，满足限界条件，令x[2]=2，生成C结点<br>
+<img src="https://520cxy.github.io/post-images/1623804450415.png" alt="" loading="lazy"><br>
+<font size=4 color=brown>（3）扩展C结点(t=3)</font></p>
 
                 </div>
             </article>
