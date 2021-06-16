@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-05-05T01:24:47.420Z</updated>
+    <updated>2021-06-16T00:00:39.083Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,56 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[SOL_加工生产调度]]></title>
+        <id>https://520cxy.github.io/post/sol_-jia-gong-sheng-chan-diao-du/</id>
+        <link href="https://520cxy.github.io/post/sol_-jia-gong-sheng-chan-diao-du/">
+        </link>
+        <updated>2021-06-15T07:23:34.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=2 color=green><s>突然想起来我还有博客</s>大雾</font><br>
+<a href="https://www.luogu.com.cn/problem/P1248">题面传送门</a><br>
+<font size=6 color=blue>1.问题分析</font><br>
+根据题面的描述，不同的加工顺序，加工完机器所需零件不同<br>
+例如：现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6<br>
+<font color=brown size=4>(1)如果按照{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}的顺序加工</font><br>
+如下图所示：<br>
+<img src="https://520cxy.github.io/post-images/1623743000390.png" alt="" loading="lazy"><br>
+J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零件在第一台机器上的加工时间。J<sub>12</sub>、J<sub>22</sub>、J<sub>32</sub>分别表示第1、2、3个零件在第二台机器上的加工时间。<br>
+第一台机器先加工第1个零件，需要加工的时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器储蓄空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，这时第二台机器处于空闲状态，等待第2个零件在第一台机器上下线<br>
+第一台机器接着加工第2个零件，需要J<sub>21</sub>=5, t=7时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>22</sub>=1,t=8时结束，这时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
+第一台机器接着加工第3个零件，需要J<sub>31</sub>=4,t=11时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>32</sub>=6,t=17时结束<br>
+<font color=red>我们得到t<sub>1</sub>=17</font><br>
+<font color=brown size=4>(2)如果按照{J<sub>1</sub>, J<sub>3</sub>, J<sub>2</sub>}的顺序加工</font><br>
+如下图所示：<br>
+<img src="https://520cxy.github.io/post-images/1623744295684.png" alt="" loading="lazy"><br>
+第一台机器先加工第1个零件，需要加工时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，此时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
+第一台机器接着加工第3个零件，需要J<sub>31</sub>=4,t=6时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>32</sub>=6,t=12时结束<br>
+第一台机器接着加工第2个零件需要J<sub>21</sub>=5,t=11时结束，交给第二台机器加工，此时第二台机器处于繁忙状态，需要等待其空闲下来，t=12时才能加工，加工时间为J<sub>22</sub>=1,t=13时结束<br>
+<font color=red>我们得到t<sub>2</sub>=13</font>,显然比第一种更优</p>
+<p>我们可以得出一个有趣的现象：第一台机器可以连续加工，而第二台机器开始加工的时间是<font color=red><strong>当前第一台机器的下线时间和第二台机器下线时间的最大值</strong></font>就是图中连线的两个数值的最大值</p>
+<p>3个机器零件有多少种加工顺序呢？即3个机器零件的全排列，共6种：<br>
+1 2 3； 1 3 2； 2 1 3； 2 3 1； 3 2 1； 3 1 2；<br>
+而我们的目的就是找到其中一个加工顺序，使得总加工时间最短<br>
+实际上就是找到n个机器零件的一个排列，n个机器零件共有n！种排列，每个排列都是一种可行解。解空间是一棵排列树，如下图<br>
+<img src="https://520cxy.github.io/post-images/1623748899996.png" alt="" loading="lazy"><br>
+例如3个机器零件的解空间树，如下图<br>
+<img src="https://520cxy.github.io/post-images/1623749495559.png" alt="" loading="lazy"><br>
+从根到叶子的路径就是机器加工的一个加工顺序，如最右侧的（3，1，2），然后定义限界函数求最优解</p>
+<p><font size=6 color=blue>2.算法设计</font><br>
+<font color=brown size=4>(1)定义问题的解空间</font><br>
+机器零件加工问题解的形式为n元组：{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i</sub>,..., x<sub>n</sub>}。分量x表示第i个加工的零件号n个零件做成的集合为S={1， 2， …， n}, x<sub>i</sub>的取值为S-{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i-1</sub>}， i=1, 2, ..., n<br>
+<font color=brown size=4>(2)解空间的组织结构</font><br>
+就是一棵排列树，如图<br>
+<img src="https://520cxy.github.io/post-images/1623750346102.png" alt="" loading="lazy"><br>
+<font color=brown size=4>(3)搜索解空间</font><br>
+● <font color=black>约束条件</font><br>
+由于任何一种零件加工次序不存在无法调度的情况，均是合法的。因此，任何一个排列都表示为问题的一个可行解，故不需要约束条件<br>
+● <font color=black>限界条件</font><br>
+用f<sub>2</sub>表示当前已完成的零件在第二台机器加工所用的时间，用bestf表示当前找到的最优加工方案的完成时间。显然，继续向深处搜索时，f<sub>2</sub>不会减少，只会增加。因此当f<sub>2</sub>⩾bestf时，就没有继续向深处搜索的必要。限界条件可以描述为：f<sub>2</sub>&lt;bestf, f<sub>2</sub>的初值为0，bestf的初值为无穷大。<br>
+● <font color=black>搜索过程</font><br>
+扩展结点沿着某个分支扩展时需要判断限界条件，如果满足，就进入深一层继续搜索；如果不满足，就剪掉该分支。搜索到叶子结点时，就找到当前最优解。搜索直到全部的活结点变成死节点为止。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[DP分析]]></title>
         <id>https://520cxy.github.io/post/dp-fen-xi/</id>
@@ -45,6 +95,7 @@
 有个要注意的地方，就是上面子集划分的两个原则，并不是一定所以情况下都要满足，首先不遗漏很清楚，要满足的，<font color=red>但是不重复需要注意：当我们求数量的时候，我们必须要满足不重复。但是当我们求最值的时候，其实可以重复，这点利用传递性很好理解，就是计算多了。</font></p>
 <p>然后集合划分，我们一般也有个套路，我们一般是怎么去划分这个集合呢？<br>
 <font color=red>划分依据：找最后一个不同点。</font></p>
+<p>在找递推式子的时候，我们一般先假设我们已经求出了答案，顺藤摸瓜，就能更好地划分每个状态</p>
 ]]></content>
     </entry>
     <entry>
