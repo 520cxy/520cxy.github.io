@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://520cxy.github.io</id>
+    <id>http://localhost:4001</id>
     <title>LL.的小窝</title>
-    <updated>2021-06-16T05:21:36.559Z</updated>
+    <updated>2021-06-24T06:44:02.581Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://520cxy.github.io"/>
-    <link rel="self" href="https://520cxy.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4001"/>
+    <link rel="self" href="http://localhost:4001/atom.xml"/>
     <subtitle>共道人间惆怅事,不知今夕是何年 ——《周秦行纪》</subtitle>
-    <logo>https://520cxy.github.io/images/avatar.png</logo>
-    <icon>https://520cxy.github.io/favicon.ico</icon>
+    <logo>http://localhost:4001/images/avatar.png</logo>
+    <icon>http://localhost:4001/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
     <entry>
         <title type="html"><![CDATA[SOL_加工生产调度]]></title>
-        <id>https://520cxy.github.io/post/sol_-jia-gong-sheng-chan-diao-du/</id>
-        <link href="https://520cxy.github.io/post/sol_-jia-gong-sheng-chan-diao-du/">
+        <id>http://localhost:4001/post/sol_-jia-gong-sheng-chan-diao-du/</id>
+        <link href="http://localhost:4001/post/sol_-jia-gong-sheng-chan-diao-du/">
         </link>
         <updated>2021-06-15T07:23:34.000Z</updated>
         <content type="html"><![CDATA[<p><font size=2 color=green><s>突然想起来我还有博客</s>大雾</font><br>
@@ -23,7 +23,7 @@
 例如：现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6<br>
 <font color=brown size=4>(1)如果按照{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}的顺序加工</font><br>
 如下图所示：<br>
-<img src="https://520cxy.github.io/post-images/1623743000390.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623743000390.png" alt="" loading="lazy"><br>
 J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零件在第一台机器上的加工时间。J<sub>12</sub>、J<sub>22</sub>、J<sub>32</sub>分别表示第1、2、3个零件在第二台机器上的加工时间。<br>
 第一台机器先加工第1个零件，需要加工的时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器储蓄空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，这时第二台机器处于空闲状态，等待第2个零件在第一台机器上下线<br>
 第一台机器接着加工第2个零件，需要J<sub>21</sub>=5, t=7时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>22</sub>=1,t=8时结束，这时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
@@ -31,7 +31,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 <font color=red>我们得到t<sub>1</sub>=17</font><br>
 <font color=brown size=4>(2)如果按照{J<sub>1</sub>, J<sub>3</sub>, J<sub>2</sub>}的顺序加工</font><br>
 如下图所示：<br>
-<img src="https://520cxy.github.io/post-images/1623744295684.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623744295684.png" alt="" loading="lazy"><br>
 第一台机器先加工第1个零件，需要加工时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，此时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
 第一台机器接着加工第3个零件，需要J<sub>31</sub>=4,t=6时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>32</sub>=6,t=12时结束<br>
 第一台机器接着加工第2个零件需要J<sub>21</sub>=5,t=11时结束，交给第二台机器加工，此时第二台机器处于繁忙状态，需要等待其空闲下来，t=12时才能加工，加工时间为J<sub>22</sub>=1,t=13时结束<br>
@@ -41,16 +41,16 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 1 2 3； 1 3 2； 2 1 3； 2 3 1； 3 2 1； 3 1 2；<br>
 而我们的目的就是找到其中一个加工顺序，使得总加工时间最短<br>
 实际上就是找到n个机器零件的一个排列，n个机器零件共有n！种排列，每个排列都是一种可行解。解空间是一棵排列树，如下图<br>
-<img src="https://520cxy.github.io/post-images/1623748899996.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623748899996.png" alt="" loading="lazy"><br>
 例如3个机器零件的解空间树，如下图<br>
-<img src="https://520cxy.github.io/post-images/1623749495559.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623749495559.png" alt="" loading="lazy"><br>
 从根到叶子的路径就是机器加工的一个加工顺序，如最右侧的（3，1，2），然后定义限界函数求最优解</p>
 <p><font size=6 color=blue>2.算法设计</font><br>
 <font color=brown size=4>(1)定义问题的解空间</font><br>
 机器零件加工问题解的形式为n元组：{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i</sub>,..., x<sub>n</sub>}。分量x表示第i个加工的零件号n个零件做成的集合为S={1， 2， …， n}, x<sub>i</sub>的取值为S-{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i-1</sub>}， i=1, 2, ..., n<br>
 <font color=brown size=4>(2)解空间的组织结构</font><br>
 就是一棵排列树，如图<br>
-<img src="https://520cxy.github.io/post-images/1623750346102.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623750346102.png" alt="" loading="lazy"><br>
 <font color=brown size=4>(3)搜索解空间</font><br>
 ● <font color=black>约束条件</font><br>
 由于任何一种零件加工次序不存在无法调度的情况，均是合法的。因此，任何一个排列都表示为问题的一个可行解，故不需要约束条件<br>
@@ -62,22 +62,22 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 例子跟一开始的一个鸭子，现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6。f<sub>1</sub>表示当前第一台机器上加工的完成时间，f<sub>2</sub>表示当前第二台机器上加工的完成时间。<br>
 <font size=4 color=brown>（1）开始搜索第一层(t=1)</font><br>
 扩展A结点的分支x<sub>1</sub>=1,f<sub>2</sub>=5,bestf的初值为无穷大，f<sub>2</sub>&lt; bestf，满足限界条件，令x[1]=1，生成B结点<br>
-<img src="https://520cxy.github.io/post-images/1623803034925.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623803034925.png" alt="" loading="lazy"><br>
 <font size=4 color=brown>（2）扩展B结点(t=2)</font><br>
 扩展B结点的分支x<sub>2</sub>=2, f<sub>2</sub>=8,bestf初值为无穷大，满足限界条件，令x[2]=2，生成C结点<br>
-<img src="https://520cxy.github.io/post-images/1623804450415.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1623804450415.png" alt="" loading="lazy"><br>
 <font size=4 color=brown>（3）扩展C结点(t=3)</font></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[DP分析]]></title>
-        <id>https://520cxy.github.io/post/dp-fen-xi/</id>
-        <link href="https://520cxy.github.io/post/dp-fen-xi/">
+        <id>http://localhost:4001/post/dp-fen-xi/</id>
+        <link href="http://localhost:4001/post/dp-fen-xi/">
         </link>
         <updated>2021-04-19T05:43:59.000Z</updated>
         <content type="html"><![CDATA[<p><font size=6 color=red>1.为什么做dp要分析：</font><br>
 比如，我们在计算123x456时，会使用竖式计算<s>你牛你口算</s>，<br>
-<img src="https://520cxy.github.io/post-images/1618811515575.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1618811515575.png" alt="" loading="lazy"><br>
 但是要是我们口算234x567，对于我这种蒟蒻肯定是很困难的。<br>
 那么做dp题目的时候也一样，很多时候我们做dp题目喜欢干瞪眼看， 确信。然后就空想，不动笔不动纸，那么这样情况下就白白给自己增加了很多难度。<font color=green>那么dp分析法，就是相当于乘法列竖式一样的一个使解决问题思路清晰的方式</font></p>
 <p><font size=6 color=red>2.核心</font><br>
@@ -95,7 +95,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 第二个要考虑的就是f[i]虽然表示的是一个集合，但是存入数组的是一个数字或bool值。那么<font color=red>这个数和这个集合的关系，我们称为属性</font>，说白了就是我们这个集合存的是什么东西，<font color="#00dddd">属性一般有三种：maxn，minn，count</font></p>
 <p><font color=blue size=5>阶段二：化整为零， 即状态计算</font><br>
 与阶段一相反，这个等等举例。那么怎么去做？<font color=red>先看f[i]表示的所有状态是什么，然后把整个状态里看成一个集合，那么求f[i]就需要把整个集合划分为若干个子集。</font><br>
-<img src="https://520cxy.github.io/post-images/1618814570057.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1618814570057.png" alt="" loading="lazy"><br>
 这些子集一般又符合两个原则；<br>
 <font color=pink>原则一，不重复：</font>就是每个元素是单独属于其中一个子集；<br>
 <font color=pink>原则二，不遗漏：</font>就是所有子集并集的元素一定把f[i]集合中所有元素都包含了。<br>
@@ -109,40 +109,40 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
     </entry>
     <entry>
         <title type="html"><![CDATA[原根代码及优化]]></title>
-        <id>https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/</id>
-        <link href="https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/">
+        <id>http://localhost:4001/post/yuan-gen-dai-ma-ji-you-hua/</id>
+        <link href="http://localhost:4001/post/yuan-gen-dai-ma-ji-you-hua/">
         </link>
         <updated>2021-04-13T10:59:10.000Z</updated>
         <content type="html"><![CDATA[<p><font color=green size=5><strong>CODE</strong></font><br>
-<img src="https://520cxy.github.io/post-images/1619069324790.png" alt="" loading="lazy"><br>
-<img src="https://520cxy.github.io/post-images/1619069332113.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1619069324790.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1619069332113.png" alt="" loading="lazy"><br>
 这是最常用的方法<br>
 如果你还想要更优的复杂度：<br>
 删去<br>
-<img src="https://520cxy.github.io/post-images/1619069374435.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1619069374435.png" alt="" loading="lazy"><br>
 加上<br>
-<img src="https://520cxy.github.io/post-images/1619069410903.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="1"><img src="https://520cxy.github.io/post-images/1619069561433.png" alt="" loading="lazy"></figure>
+<img src="http://localhost:4001/post-images/1619069410903.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4001/post-images/1619069561433.png" alt="" loading="lazy"></figure>
 <p>还有更快的！！！<br>
 现在发现瓶颈在枚举的数量上，其实还可以优化<br>
 有一个结论：设φ ( m ) = p<sub>1</sub><sup>a<sub>1</sub></sup> * p<sub>2</sub><sup>a<sub>2</sub></sup> * ... * p<sub>n</sub><sup>a<sub>n</sub></sup><br>
-那么只需要判断：<img src="https://520cxy.github.io/post-images/1618471759699.png" alt="" loading="lazy"><br>
+那么只需要判断：<img src="http://localhost:4001/post-images/1618471759699.png" alt="" loading="lazy"><br>
 如果有一个条件满足，那么当前的g一定不是原根如果对于一个φ(m)的因数b满足了条件，那么在这些数当中一定至少有一个也满足这个条件，然后就好啦<br>
 代码依然用替换来给出，替换上文提到的地方<br>
-<img src="https://520cxy.github.io/post-images/1619069458700.png" alt="" loading="lazy"><br>
-<img src="https://520cxy.github.io/post-images/1619069496529.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1619069458700.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1619069496529.png" alt="" loading="lazy"><br>
 完结撒花</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[4.5 Solution]]></title>
-        <id>https://520cxy.github.io/post/45-solution/</id>
-        <link href="https://520cxy.github.io/post/45-solution/">
+        <id>http://localhost:4001/post/45-solution/</id>
+        <link href="http://localhost:4001/post/45-solution/">
         </link>
         <updated>2021-04-05T06:46:08.000Z</updated>
         <content type="html"><![CDATA[<p><font size=6>T1:纯粹理性批判</font><br>
 <font size=4>题目描述：</font><br>
-<img src="https://520cxy.github.io/post-images/1617605412575.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1617605412575.png" alt="" loading="lazy"><br>
 样例输入：10<br>
 样例输出：21<br>
 <font size=4>方法：</font><br>
@@ -153,7 +153,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 然后统计答案</p>
 <p><font size=6>T2:自我救赎</font><br>
 <font size=4>题目描述：</font><br>
-<img src="https://520cxy.github.io/post-images/1617607036161.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1617607036161.png" alt="" loading="lazy"><br>
 样例输入:<br>
 5<br>
 5 4 3 2 1<br>
@@ -165,7 +165,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 </blockquote>
 <p><font size=6>T4:失乐园</font><br>
 <font size=4>题目描述：</font><br>
-<img src="https://520cxy.github.io/post-images/1617607354812.png" alt="" loading="lazy"><br>
+<img src="http://localhost:4001/post-images/1617607354812.png" alt="" loading="lazy"><br>
 样例输入：<br>
 8<br>
 20152016<br>
@@ -183,8 +183,8 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
     </entry>
     <entry>
         <title type="html"><![CDATA[4.2 Solution]]></title>
-        <id>https://520cxy.github.io/post/42-solution/</id>
-        <link href="https://520cxy.github.io/post/42-solution/">
+        <id>http://localhost:4001/post/42-solution/</id>
+        <link href="http://localhost:4001/post/42-solution/">
         </link>
         <updated>2021-04-02T02:04:33.000Z</updated>
         <content type="html"><![CDATA[<p><font size=5>T1 生成字符串</font><br>
@@ -195,7 +195,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 只要按照题目描述的进行操作之后，存下来的数和原数比较，反正我是做了一遍<font color=red>数学的逆运算</font>就切了唔</p>
 <p><font size=5>T4 整除</font><br>
 原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_e">ABC158 E - Divisible Substring</a><br>
-思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="https://520cxy.github.io/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
+思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="http://localhost:4001/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
 <font color=green>所以在区间[i, j]中的数都能取，之后统计i~j中所有区间长度的区间个数累计加起来</font><br>
 还有就是要注意p=2, 5的情况需要特判，由于这俩很好判断，<font color=red>只要末尾上的数可以整除那么前面一系列数都能取</font></p>
 <p><font size=5>T5 机器人</font><br>
@@ -219,13 +219,13 @@ DP很很好写——xhf dalao</font><br>
 当i启动时，子树都需要启动，方案为1。<br>
 当i不启动时，方案为子树的f值得积<br>
 最后的答案是森林中每一个根的f值之积。<br>
-<img src="https://520cxy.github.io/post-images/1617330304397.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617330304397.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Re:树链剖分的起源之战]]></title>
-        <id>https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/</id>
-        <link href="https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/">
+        <id>http://localhost:4001/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/</id>
+        <link href="http://localhost:4001/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/">
         </link>
         <updated>2021-03-31T12:26:49.000Z</updated>
         <content type="html"><![CDATA[<p><font size=6><strong>哲学</strong>三问</font><br>
@@ -243,7 +243,7 @@ DP很很好写——xhf dalao</font><br>
 <blockquote>
 <p>对于一个节点，在它的所有儿子中，size（子树大小）最大的一个就是<strong>重儿子</strong>，其余的都是<strong>轻儿子</strong>。重儿子所在的树链叫做<strong>重链</strong>，其余叫做<strong>轻链</strong>。</p>
 </blockquote>
-<p><font color=blue>e.g:</font><img src="https://520cxy.github.io/post-images/1617195153603.png" alt="" loading="lazy"><br>
+<p><font color=blue>e.g:</font><img src="http://localhost:4001/post-images/1617195153603.png" alt="" loading="lazy"><br>
 <s>头上有绿</s>被涂上颜色的是一条重链，这个栗子里有五条重链，分别为：<br>
 1---2---6---9<br>
 5<br>
@@ -264,9 +264,9 @@ To_num[i]表示线段树中的i号节点对应的是原树中的位置<br>
 //鉴于我是个蒟蒻，这里之讲用数据结构线段树维护</p>
 </blockquote>
 <p><font color=green size=4><strong>CODE:</strong></font><br>
-<img src="https://520cxy.github.io/post-images/1617195521550.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617195521550.png" alt="" loading="lazy"></p>
 <p><font color=green size=4><strong>人工栈板CODE:</strong></font><br>
-<img src="https://520cxy.github.io/post-images/1617195745240.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617195745240.png" alt="" loading="lazy"></p>
 <p><font size=4 >其他运用啦</font><br>
 <strong>LCA查询</strong><br>
 比线段树牛bi多了，<s>代码也难的一批</s><br>
@@ -281,14 +281,14 @@ To_num[i]表示线段树中的i号节点对应的是原树中的位置<br>
 <font color=red>那么LCA就是深度较小的那一个！</font></p>
 </blockquote>
 <p><font color=green size=4><strong>CODE:</strong></font><br>
-<img src="https://520cxy.github.io/post-images/1617196218239.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617196218239.png" alt="" loading="lazy"></p>
 <p><strong>区间极值或和查询</strong><br>
 在求LCA可以顺带操作一下，具体还是康代码吧::<br>
 <font color=green size=4><strong>CODE:</strong></font><br>
-<img src="https://520cxy.github.io/post-images/1617196594474.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617196594474.png" alt="" loading="lazy"></p>
 <p><font size=4 ><strong>复杂度证明</strong></font><br>
 <font color=red>------摘自OI Wiki, 因为我不会<font><br>
-<img src="https://520cxy.github.io/post-images/1617196730978.png" alt="" loading="lazy"></p>
+<img src="http://localhost:4001/post-images/1617196730978.png" alt="" loading="lazy"></p>
 <p><font size=4 ><strong>该你大展身手了！！！</strong></font><br>
 <a href="https://www.luogu.com.cn/problem/P3258">luogu P3258[JLOI2014]松鼠的新家</a><br>
 <a href="https://www.luogu.com.cn/problem/P3178">luogu P3178[HAOI2015]树上操作</a><br>
@@ -299,8 +299,8 @@ To_num[i]表示线段树中的i号节点对应的是原树中的位置<br>
     </entry>
     <entry>
         <title type="html"><![CDATA[关于Me]]></title>
-        <id>https://520cxy.github.io/post/about/</id>
-        <link href="https://520cxy.github.io/post/about/">
+        <id>http://localhost:4001/post/about/</id>
+        <link href="http://localhost:4001/post/about/">
         </link>
         <updated>2019-01-25T11:09:48.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
