@@ -57,7 +57,7 @@
                 <div class="neko">
                     <p><font size=6 color=red>1.为什么做dp要分析：</font><br>
 比如，我们在计算123x456时，会使用竖式计算<s>你牛你口算</s>，<br>
-<img src="http://localhost:4001/post-images/1618811515575.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1618811515575.png" alt="" loading="lazy"><br>
 但是要是我们口算234x567，对于我这种蒟蒻肯定是很困难的。<br>
 那么做dp题目的时候也一样，很多时候我们做dp题目喜欢干瞪眼看， 确信。然后就空想，不动笔不动纸，那么这样情况下就白白给自己增加了很多难度。<font color=green>那么dp分析法，就是相当于乘法列竖式一样的一个使解决问题思路清晰的方式</font></p>
 <p><font size=6 color=red>2.核心</font><br>
@@ -75,7 +75,7 @@
 第二个要考虑的就是f[i]虽然表示的是一个集合，但是存入数组的是一个数字或bool值。那么<font color=red>这个数和这个集合的关系，我们称为属性</font>，说白了就是我们这个集合存的是什么东西，<font color="#00dddd">属性一般有三种：maxn，minn，count</font></p>
 <p><font color=blue size=5>阶段二：化整为零， 即状态计算</font><br>
 与阶段一相反，这个等等举例。那么怎么去做？<font color=red>先看f[i]表示的所有状态是什么，然后把整个状态里看成一个集合，那么求f[i]就需要把整个集合划分为若干个子集。</font><br>
-<img src="http://localhost:4001/post-images/1618814570057.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1618814570057.png" alt="" loading="lazy"><br>
 这些子集一般又符合两个原则；<br>
 <font color=pink>原则一，不重复：</font>就是每个元素是单独属于其中一个子集；<br>
 <font color=pink>原则二，不遗漏：</font>就是所有子集并集的元素一定把f[i]集合中所有元素都包含了。<br>
@@ -94,7 +94,7 @@
         <div class="mdui-container">
             <div class="mdui-row">
                 
-                <a href="http://localhost:4001/post/sol_-jia-gong-sheng-chan-diao-du/" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
+                <a href="https://520cxy.github.io/post/sol_-jia-gong-sheng-chan-diao-du/" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
                     <div class="doc-footer-nav-text">
                         <i class="mdui-icon material-icons">arrow_back</i>
                         <span class="doc-footer-nav-direction mdui-hidden-xs-down">上一篇文章</span>
@@ -103,7 +103,7 @@
                 </a>
                 
                 
-                <a href="http://localhost:4001/post/yuan-gen-dai-ma-ji-you-hua/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
+                <a href="https://520cxy.github.io/post/yuan-gen-dai-ma-ji-you-hua/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                     <div class="doc-footer-nav-text">
                         <i class="mdui-icon material-icons">arrow_forward</i>
                         <span class="doc-footer-nav-direction">下一篇文章</span>
@@ -165,7 +165,142 @@
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="/media/live2d/js/message.js"></script>
-
+<script type="text/javascript">
+	function clickEffect() {
+		let balls = [];
+		let longPressed = false;
+		let longPress;
+		let multiplier = 0;
+		let width, height;
+		let origin;
+		let normal;
+		let ctx;
+		const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+		const canvas = document.createElement("canvas");
+		document.body.appendChild(canvas);
+		canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+		const pointer = document.createElement("span");
+		pointer.classList.add("pointer");
+		document.body.appendChild(pointer);
+	
+		if (canvas.getContext && window.addEventListener) {
+			ctx = canvas.getContext("2d");
+			updateSize();
+			window.addEventListener('resize', updateSize, false);
+			loop();
+			window.addEventListener("mousedown", function(e) {
+				pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+				document.body.classList.add("is-pressed");
+				longPress = setTimeout(function() {
+					document.body.classList.add("is-longpress");
+					longPressed = true;
+				}, 500);
+			}, false);
+			window.addEventListener("mouseup", function(e) {
+				clearInterval(longPress);
+				if (longPressed == true) {
+					document.body.classList.remove("is-longpress");
+					pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+					longPressed = false;
+				}
+				document.body.classList.remove("is-pressed");
+			}, false);
+			window.addEventListener("mousemove", function(e) {
+				let x = e.clientX;
+				let y = e.clientY;
+				pointer.style.top = y + "px";
+				pointer.style.left = x + "px";
+			}, false);
+		} else {
+			console.log("canvas or addEventListener is unsupported!");
+		}
+	
+	
+		function updateSize() {
+			canvas.width = window.innerWidth * 2;
+			canvas.height = window.innerHeight * 2;
+			canvas.style.width = window.innerWidth + 'px';
+			canvas.style.height = window.innerHeight + 'px';
+			ctx.scale(2, 2);
+			width = (canvas.width = window.innerWidth);
+			height = (canvas.height = window.innerHeight);
+			origin = {
+				x: width / 2,
+				y: height / 2
+			};
+			normal = {
+				x: width / 2,
+				y: height / 2
+			};
+		}
+		class Ball {
+			constructor(x = origin.x, y = origin.y) {
+				this.x = x;
+				this.y = y;
+				this.angle = Math.PI * 2 * Math.random();
+				if (longPressed == true) {
+					this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+				} else {
+					this.multiplier = randBetween(6, 12);
+				}
+				this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+				this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+				this.r = randBetween(8, 12) + 3 * Math.random();
+				this.color = colours[Math.floor(Math.random() * colours.length)];
+			}
+			update() {
+				this.x += this.vx - normal.x;
+				this.y += this.vy - normal.y;
+				normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+				normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+				this.r -= 0.3;
+				this.vx *= 0.9;
+				this.vy *= 0.9;
+			}
+		}
+	
+		function pushBalls(count = 1, x = origin.x, y = origin.y) {
+			for (let i = 0; i < count; i++) {
+				balls.push(new Ball(x, y));
+			}
+		}
+	
+		function randBetween(min, max) {
+			return Math.floor(Math.random() * max) + min;
+		}
+	
+		function loop() {
+			ctx.fillStyle = "rgba(255, 255, 255, 0)";
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.r < 0) continue;
+				ctx.fillStyle = b.color;
+				ctx.beginPath();
+				ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+				ctx.fill();
+				b.update();
+			}
+			if (longPressed == true) {
+				multiplier += 0.2;
+			} else if (!longPressed && multiplier >= 0) {
+				multiplier -= 0.4;
+			}
+			removeBall();
+			requestAnimationFrame(loop);
+		}
+	
+		function removeBall() {
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+					balls.splice(i, 1);
+				}
+			}
+		}
+	}
+	clickEffect();//调用
+	</script>
 </body>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>

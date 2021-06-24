@@ -62,7 +62,7 @@
 例如：现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6<br>
 <font color=brown size=4>(1)如果按照{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}的顺序加工</font><br>
 如下图所示：<br>
-<img src="http://localhost:4001/post-images/1623743000390.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623743000390.png" alt="" loading="lazy"><br>
 J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零件在第一台机器上的加工时间。J<sub>12</sub>、J<sub>22</sub>、J<sub>32</sub>分别表示第1、2、3个零件在第二台机器上的加工时间。<br>
 第一台机器先加工第1个零件，需要加工的时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器储蓄空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，这时第二台机器处于空闲状态，等待第2个零件在第一台机器上下线<br>
 第一台机器接着加工第2个零件，需要J<sub>21</sub>=5, t=7时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>22</sub>=1,t=8时结束，这时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
@@ -70,7 +70,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 <font color=red>我们得到t<sub>1</sub>=17</font><br>
 <font color=brown size=4>(2)如果按照{J<sub>1</sub>, J<sub>3</sub>, J<sub>2</sub>}的顺序加工</font><br>
 如下图所示：<br>
-<img src="http://localhost:4001/post-images/1623744295684.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623744295684.png" alt="" loading="lazy"><br>
 第一台机器先加工第1个零件，需要加工时间为J<sub>11</sub>=2,t=2时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>12</sub>=3,t=5时结束，此时第二台机器处于空闲状态，等待第3个零件在第一台机器上下线<br>
 第一台机器接着加工第3个零件，需要J<sub>31</sub>=4,t=6时结束，交给第二台机器加工，此时第二台机器处于空闲状态，需要加工时间为J<sub>32</sub>=6,t=12时结束<br>
 第一台机器接着加工第2个零件需要J<sub>21</sub>=5,t=11时结束，交给第二台机器加工，此时第二台机器处于繁忙状态，需要等待其空闲下来，t=12时才能加工，加工时间为J<sub>22</sub>=1,t=13时结束<br>
@@ -80,16 +80,16 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 1 2 3； 1 3 2； 2 1 3； 2 3 1； 3 2 1； 3 1 2；<br>
 而我们的目的就是找到其中一个加工顺序，使得总加工时间最短<br>
 实际上就是找到n个机器零件的一个排列，n个机器零件共有n！种排列，每个排列都是一种可行解。解空间是一棵排列树，如下图<br>
-<img src="http://localhost:4001/post-images/1623748899996.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623748899996.png" alt="" loading="lazy"><br>
 例如3个机器零件的解空间树，如下图<br>
-<img src="http://localhost:4001/post-images/1623749495559.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623749495559.png" alt="" loading="lazy"><br>
 从根到叶子的路径就是机器加工的一个加工顺序，如最右侧的（3，1，2），然后定义限界函数求最优解</p>
 <p><font size=6 color=blue>2.算法设计</font><br>
 <font color=brown size=4>(1)定义问题的解空间</font><br>
 机器零件加工问题解的形式为n元组：{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i</sub>,..., x<sub>n</sub>}。分量x表示第i个加工的零件号n个零件做成的集合为S={1， 2， …， n}, x<sub>i</sub>的取值为S-{x<sub>1</sub>, x<sub>2</sub>,..., x<sub>i-1</sub>}， i=1, 2, ..., n<br>
 <font color=brown size=4>(2)解空间的组织结构</font><br>
 就是一棵排列树，如图<br>
-<img src="http://localhost:4001/post-images/1623750346102.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623750346102.png" alt="" loading="lazy"><br>
 <font color=brown size=4>(3)搜索解空间</font><br>
 ● <font color=black>约束条件</font><br>
 由于任何一种零件加工次序不存在无法调度的情况，均是合法的。因此，任何一个排列都表示为问题的一个可行解，故不需要约束条件<br>
@@ -101,10 +101,10 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 例子跟一开始的一个鸭子，现在有3个机器零件{J<sub>1</sub>, J<sub>2</sub>, J<sub>3</sub>}, 在第一台机器上加工时间分别为2、5、4，在第二台机器上加工时间分别为3、1、6。f<sub>1</sub>表示当前第一台机器上加工的完成时间，f<sub>2</sub>表示当前第二台机器上加工的完成时间。<br>
 <font size=4 color=brown>（1）开始搜索第一层(t=1)</font><br>
 扩展A结点的分支x<sub>1</sub>=1,f<sub>2</sub>=5,bestf的初值为无穷大，f<sub>2</sub>&lt; bestf，满足限界条件，令x[1]=1，生成B结点<br>
-<img src="http://localhost:4001/post-images/1623803034925.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623803034925.png" alt="" loading="lazy"><br>
 <font size=4 color=brown>（2）扩展B结点(t=2)</font><br>
 扩展B结点的分支x<sub>2</sub>=2, f<sub>2</sub>=8,bestf初值为无穷大，满足限界条件，令x[2]=2，生成C结点<br>
-<img src="http://localhost:4001/post-images/1623804450415.png" alt="" loading="lazy"><br>
+<img src="https://520cxy.github.io/post-images/1623804450415.png" alt="" loading="lazy"><br>
 <font size=4 color=brown>（3）扩展C结点(t=3)</font></p>
 
                 </div>
@@ -118,7 +118,7 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
                 <div class="mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left"></div>
                 
                 
-                <a href="http://localhost:4001/post/dp-fen-xi/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
+                <a href="https://520cxy.github.io/post/dp-fen-xi/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                     <div class="doc-footer-nav-text">
                         <i class="mdui-icon material-icons">arrow_forward</i>
                         <span class="doc-footer-nav-direction">下一篇文章</span>
@@ -180,7 +180,142 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="/media/live2d/js/message.js"></script>
-
+<script type="text/javascript">
+	function clickEffect() {
+		let balls = [];
+		let longPressed = false;
+		let longPress;
+		let multiplier = 0;
+		let width, height;
+		let origin;
+		let normal;
+		let ctx;
+		const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+		const canvas = document.createElement("canvas");
+		document.body.appendChild(canvas);
+		canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+		const pointer = document.createElement("span");
+		pointer.classList.add("pointer");
+		document.body.appendChild(pointer);
+	
+		if (canvas.getContext && window.addEventListener) {
+			ctx = canvas.getContext("2d");
+			updateSize();
+			window.addEventListener('resize', updateSize, false);
+			loop();
+			window.addEventListener("mousedown", function(e) {
+				pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+				document.body.classList.add("is-pressed");
+				longPress = setTimeout(function() {
+					document.body.classList.add("is-longpress");
+					longPressed = true;
+				}, 500);
+			}, false);
+			window.addEventListener("mouseup", function(e) {
+				clearInterval(longPress);
+				if (longPressed == true) {
+					document.body.classList.remove("is-longpress");
+					pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+					longPressed = false;
+				}
+				document.body.classList.remove("is-pressed");
+			}, false);
+			window.addEventListener("mousemove", function(e) {
+				let x = e.clientX;
+				let y = e.clientY;
+				pointer.style.top = y + "px";
+				pointer.style.left = x + "px";
+			}, false);
+		} else {
+			console.log("canvas or addEventListener is unsupported!");
+		}
+	
+	
+		function updateSize() {
+			canvas.width = window.innerWidth * 2;
+			canvas.height = window.innerHeight * 2;
+			canvas.style.width = window.innerWidth + 'px';
+			canvas.style.height = window.innerHeight + 'px';
+			ctx.scale(2, 2);
+			width = (canvas.width = window.innerWidth);
+			height = (canvas.height = window.innerHeight);
+			origin = {
+				x: width / 2,
+				y: height / 2
+			};
+			normal = {
+				x: width / 2,
+				y: height / 2
+			};
+		}
+		class Ball {
+			constructor(x = origin.x, y = origin.y) {
+				this.x = x;
+				this.y = y;
+				this.angle = Math.PI * 2 * Math.random();
+				if (longPressed == true) {
+					this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+				} else {
+					this.multiplier = randBetween(6, 12);
+				}
+				this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+				this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+				this.r = randBetween(8, 12) + 3 * Math.random();
+				this.color = colours[Math.floor(Math.random() * colours.length)];
+			}
+			update() {
+				this.x += this.vx - normal.x;
+				this.y += this.vy - normal.y;
+				normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+				normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+				this.r -= 0.3;
+				this.vx *= 0.9;
+				this.vy *= 0.9;
+			}
+		}
+	
+		function pushBalls(count = 1, x = origin.x, y = origin.y) {
+			for (let i = 0; i < count; i++) {
+				balls.push(new Ball(x, y));
+			}
+		}
+	
+		function randBetween(min, max) {
+			return Math.floor(Math.random() * max) + min;
+		}
+	
+		function loop() {
+			ctx.fillStyle = "rgba(255, 255, 255, 0)";
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.r < 0) continue;
+				ctx.fillStyle = b.color;
+				ctx.beginPath();
+				ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+				ctx.fill();
+				b.update();
+			}
+			if (longPressed == true) {
+				multiplier += 0.2;
+			} else if (!longPressed && multiplier >= 0) {
+				multiplier -= 0.4;
+			}
+			removeBall();
+			requestAnimationFrame(loop);
+		}
+	
+		function removeBall() {
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+					balls.splice(i, 1);
+				}
+			}
+		}
+	}
+	clickEffect();//调用
+	</script>
 </body>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
