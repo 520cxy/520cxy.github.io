@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-06-25T05:28:59.564Z</updated>
+    <updated>2021-06-25T11:38:58.438Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -11,12 +11,103 @@
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
     <entry>
+        <title type="html"><![CDATA[html]]></title>
+        <id>https://520cxy.github.io/post/html/</id>
+        <link href="https://520cxy.github.io/post/html/">
+        </link>
+        <updated>2021-06-25T10:50:20.000Z</updated>
+        <content type="html"><![CDATA[<html>
+<head>
+<title>中国站长站--跟随鼠标的幻影文字</title>
+</head>
+<body>
+<script LANGUAGE="JavaScript">
+<!-- Begin
+message = '欢迎访问网页制作大宝库!';
+FonT = 'Verdana';
+ColoR = 'ff0000';
+SizE = 3; //1 to 7 only!
+var amount = 5, ypos =- 50, xpos = 0, Ay = 0, Ax = 0, By = 0, Bx = 0, Cy = 0, Cx = 0, Dy = 0, Dx = 0, Ey = 0, Ex = 0;
+if (document.layers) {
+for (i = 0; i < amount; i++) {
+document.write('<layer name=nsl'+i+' top=0 left=0><font face='+FonT+' size='+SizE+' color='+ColoR+'>'+message+'</font></layer>');
+}
+window.captureEvents(Event.MOUSEMOVE);
+function nsmouse(evnt) {
+xpos = evnt.pageX + 20;
+ypos = evnt.pageY + 20;
+}
+window.onMouseMove = nsmouse;
+}
+else if (document.all) {
+document.write("<div id='outer' style='position:absolute;top:0px;left:0px'>");
+document.write("<div style='position:relative'>");
+for (i = 0; i < amount; i++) {
+document.write('<div id="text"'+i+' style="position:absolute;top:0px;left:0px;width:400px;height:20px"><font face='+FonT+' size='+SizE+' color='+ColoR+'>'+message+'</font></div>')
+}
+document.write("</div>");
+document.write("</div>");
+function iemouse() {
+ypos = event.y + 20;
+xpos = event.x + 20;
+}
+window.document.onmousemove = iemouse;
+}
+function makefollow() {
+if (document.layers) {
+document.layers['nsl'+0].top = ay;
+document.layers['nsl'+0].left = ax;
+document.layers['nsl'+1].top = by;
+document.layers['nsl'+1].left = bx;
+document.layers['nsl'+2].top = cy;
+document.layers['nsl'+2].left = cx;
+document.layers['nsl'+3].top = Dy;
+document.layers['nsl'+3].left = Dx;
+document.layers['nsl'+4].top = Ey;
+document.layers['nsl'+4].left = Ex;
+}
+else if (document.all) {
+outer.style.pixelTop = document.body.scrollTop;
+text[0].style.pixelTop = ay;
+text[0].style.pixelLeft = ax;
+text[1].style.pixelTop = by;
+text[1].style.pixelLeft = bx;
+text[2].style.pixelTop = cy;
+text[2].style.pixelLeft = cx;
+text[3].style.pixelTop = Dy;
+text[3].style.pixelLeft = Dx;
+text[4].style.pixelTop = Ey;
+text[4].style.pixelLeft = Ex;
+}
+}
+function move() {
+ey = Ey += (ypos - Ey) * 0.2;
+ex = Ex += (xpos - Ex) * 0.2;
+dy = Dy += (ey - Dy) * 0.3;
+dx = Dx += (ex - Dx) * 0.3;
+cy = Cy += (dy - Cy) * 0.4;
+cx = Cx += (dx - Cx) * 0.4;
+by = By += (cy - By) * 0.5;
+bx = Bx += (cx - Bx) * 0.5;
+ay = Ay += (by - Ay) * 0.6;
+ax = Ax += (bx - Ax) * 0.6;
+makefollow();
+setTimeout('move()', 100);
+}
+window.onload=move;
+// End -->
+</script>
+</body>
+</html>]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[我们毕业了]]></title>
         <id>https://520cxy.github.io/post/wo-men-bi-ye-liao/</id>
         <link href="https://520cxy.github.io/post/wo-men-bi-ye-liao/">
         </link>
         <updated>2021-06-25T05:13:01.000Z</updated>
-        <content type="html"><![CDATA[<p><font face = "楷体"> <center><br>
+        <content type="html"><![CDATA[<p><img src="https://520cxy.github.io/post-images/1624621129736.gif" alt="" loading="lazy"><br>
+<font face = "楷体"> <center><br>
 <font color = orange><font size=5>一张新拍的照片<br>
 好像带给我一点点怀念<br>
 食堂周围的那一片<br>
