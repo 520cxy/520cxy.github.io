@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-01T06:04:56.724Z</updated>
+    <updated>2021-07-01T07:58:26.596Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -60,94 +60,38 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[html]]></title>
-        <id>https://520cxy.github.io/post/html/</id>
-        <link href="https://520cxy.github.io/post/html/">
+        <title type="html"><![CDATA[summer？]]></title>
+        <id>https://520cxy.github.io/post/shu-jia/</id>
+        <link href="https://520cxy.github.io/post/shu-jia/">
         </link>
-        <updated>2021-06-25T10:50:20.000Z</updated>
-        <content type="html"><![CDATA[<html>
-<head>
-<title>中国站长站--跟随鼠标的幻影文字</title>
-</head>
-<body>
-<script LANGUAGE="JavaScript">
-<!-- Begin
-message = '欢迎访问网页制作大宝库!';
-FonT = 'Verdana';
-ColoR = 'ff0000';
-SizE = 3; //1 to 7 only!
-var amount = 5, ypos =- 50, xpos = 0, Ay = 0, Ax = 0, By = 0, Bx = 0, Cy = 0, Cx = 0, Dy = 0, Dx = 0, Ey = 0, Ex = 0;
-if (document.layers) {
-for (i = 0; i < amount; i++) {
-document.write('<layer name=nsl'+i+' top=0 left=0><font face='+FonT+' size='+SizE+' color='+ColoR+'>'+message+'</font></layer>');
-}
-window.captureEvents(Event.MOUSEMOVE);
-function nsmouse(evnt) {
-xpos = evnt.pageX + 20;
-ypos = evnt.pageY + 20;
-}
-window.onMouseMove = nsmouse;
-}
-else if (document.all) {
-document.write("<div id='outer' style='position:absolute;top:0px;left:0px'>");
-document.write("<div style='position:relative'>");
-for (i = 0; i < amount; i++) {
-document.write('<div id="text"'+i+' style="position:absolute;top:0px;left:0px;width:400px;height:20px"><font face='+FonT+' size='+SizE+' color='+ColoR+'>'+message+'</font></div>')
-}
-document.write("</div>");
-document.write("</div>");
-function iemouse() {
-ypos = event.y + 20;
-xpos = event.x + 20;
-}
-window.document.onmousemove = iemouse;
-}
-function makefollow() {
-if (document.layers) {
-document.layers['nsl'+0].top = ay;
-document.layers['nsl'+0].left = ax;
-document.layers['nsl'+1].top = by;
-document.layers['nsl'+1].left = bx;
-document.layers['nsl'+2].top = cy;
-document.layers['nsl'+2].left = cx;
-document.layers['nsl'+3].top = Dy;
-document.layers['nsl'+3].left = Dx;
-document.layers['nsl'+4].top = Ey;
-document.layers['nsl'+4].left = Ex;
-}
-else if (document.all) {
-outer.style.pixelTop = document.body.scrollTop;
-text[0].style.pixelTop = ay;
-text[0].style.pixelLeft = ax;
-text[1].style.pixelTop = by;
-text[1].style.pixelLeft = bx;
-text[2].style.pixelTop = cy;
-text[2].style.pixelLeft = cx;
-text[3].style.pixelTop = Dy;
-text[3].style.pixelLeft = Dx;
-text[4].style.pixelTop = Ey;
-text[4].style.pixelLeft = Ex;
-}
-}
-function move() {
-ey = Ey += (ypos - Ey) * 0.2;
-ex = Ex += (xpos - Ex) * 0.2;
-dy = Dy += (ey - Dy) * 0.3;
-dx = Dx += (ex - Dx) * 0.3;
-cy = Cy += (dy - Cy) * 0.4;
-cx = Cx += (dx - Cx) * 0.4;
-by = By += (cy - By) * 0.5;
-bx = Bx += (cx - Bx) * 0.5;
-ay = Ay += (by - Ay) * 0.6;
-ax = Ax += (bx - Ax) * 0.6;
-makefollow();
-setTimeout('move()', 100);
-}
-window.onload=move;
-// End -->
-</script>
-</body>
-</html>]]></content>
+        <updated>2021-06-29T00:23:17.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P2363">马农</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+标签给定的是dp，其实就是暴力枚举， 对于限定条件<font color=red>矩阵权值一样，且只有一个交点。</font>就可以直接枚举矩阵权值与交点；<br>
+先做二维矩阵和，再N<sup>2</sup>枚举交点，之后分情况枚举矩阵的权值和，开个数组存不同和的方案数，然后ans加过去就过了，而对于枚举的两个矩阵只有一个左上，一个右下；一个右上，一个左下这两种。<br>
+<img src="https://520cxy.github.io/post-images/1624926912914.png" alt="" loading="lazy"></p>
+<p><a href="https://www.luogu.com.cn/problem/P4655">[CEOI2017]Building Bridges</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+显然，对于第i个柱子，我们连接的代价为建桥代价+拆除代价：W<sub>总</sub> = (h<sub>i</sub>-h<sub>j</sub>)<sup>2</sup>+(s<sub>i-1</sub>-s<sub>j</sub>)， (j为上一个柱子端点)化简后得：W<sub>总</sub>=h<sub>i</sub><sup>2</sup>+h<sub>j</sub><sup>2</sup>-2h<sub>i</sub>h<sub>j</sub>+s<sub>i-1</sub>-s<sub>j</sub>，而影响对于i总代价的变量只有j，设a<sub>j</sub> = -2h<sub>j</sub>, b<sub>j</sub>=h<sub>j</sub>+f<sub>j</sub><sup>2</sup>-s<sub>j</sub>;<br>
+f<sub>i</sub> = h<sub>i</sub><sup>2</sup>+s<sub>i-1</sub>+min{a<sub>j</sub>h<sub>i</sub>+b<sub>j</sub>}<br>
+问题就转化为<font color=red>给定直线y<sub>j</sub>=a<sub>j</sub>x+b<sub>j</sub>,求当x=h<sub>i</sub>时，y<sub>j</sub>的最小值</font><br>
+而对于这样动态插入直线，维护最优解，我跟wcr学到了<strong>李超线段树</strong></p>
+<p><font size=6><strong>7.1 :</strong></font><br>
+<a href="https://www.luogu.com.cn/problem/P1773">符文之语</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需要划分的阶段（要加的括号），<br>
+对于每个i可以取到的j，由f[j][k]推出当前位，之后取最优解<br>
+<img src="https://520cxy.github.io/post-images/1625122781301.png" alt="" loading="lazy"></p>
+<p><a href="https://www.luogu.com.cn/problem/P2330"> [SCOI2005]繁忙的都市</a><br>
+<font color = yellow><strong>普及/提高-</strong></font><br>
+最小生成树kruskal的板子题，最少边数肯定是n-1，最小值的最大值取max就行</p>
+<p><a href="https://www.luogu.com.cn/problem/P1339">[USACO09OCT]Heat Wave G</a><br>
+<font color = yellow><strong>普及/提高-</strong></font><br>
+迪杰斯特拉加个堆优化就过了，注意题目是<strong>无向图</strong>所以<font size=5><strong>要建双向边！！！</strong></font>,我忘了，交了好几遍才发现😭😭😭</p>
+<p><a href="https://www.luogu.com.cn/problem/P1111">修复公路</a><br>
+<font color = yellow><strong>普及/提高-</strong></font><br>
+贪心从时间小的开始修，每修一条路，用并查集判断两个村是不是已经联通了，如果没有就合并，连接的村庄数量cnt++，当cnt==n-1就直接输出当前这条路的时间return 0，否则接着修，如果路修完就结束循环，puts(&quot;-1&quot;);</p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[我们毕业了]]></title>
