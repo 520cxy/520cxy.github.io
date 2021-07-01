@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-01T06:03:37.931Z</updated>
+    <updated>2021-07-01T06:04:56.724Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -19,7 +19,7 @@
         <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P7115">[NOIP2020] 移球游戏</a><br>
 <font color = purple><strong>省选/NOI-</strong></font><br>
 <strong>好像就是大大大大大模拟</strong>， 利用栈的特性，对每列每种颜色构造出“全色列”，对于每次构造，我们采用一个空栈和一个满栈，我们枚举每次移动的颜色，记每列该颜色的数量为t<sub>1</sub>，那么每次先移动空栈前一个t<sub>1</sub>个球到空栈里，然后将当前栈里的当前颜色的移动到空栈前一个栈上，将其他颜色的球移动到空栈上；之后再把空栈上的n-t<sub>1</sub>个球放到当前栈上，之后我们我们看当前列的下一列，把这列当做当前列，再把当前列的其他颜色放到上一列上，然后当前颜色放到空列上，我们记这样的操作为一次操作。最后只要枚举颜色，在每个颜色进行枚举栈并循环操作就能分离所有颜色了。</p>
-<p>[Double Knapsack])(https://codeforces.com/problemset/problem/618/F)<br>
+<p><a href="https://codeforces.com/problemset/problem/618/F">Double Knapsack</a><br>
 <font color = black><strong>NOI/NOI+/CTSC</strong></font><br>
 显然先对每个集合内元素升序排序，做前缀和而要使他们的元素和相等，我们想到的肯定是选择每个集合内的某两个区间，<s>正确性显然</s>我们设<strong>c<sub>i</sub>表示最大的j使得s<sub>ai</sub>&gt;=s<sub>bj</sub></strong> 整理得：s<sub>ai</sub>-s<sub>b<sub>ci</sub></sub> &lt; b<sub>ci+1</sub><br>
 所以题目的差共有n+1种可能。再根据狗朝园里可知至少有两个差值是相等的之后就枚举就行了<br>
