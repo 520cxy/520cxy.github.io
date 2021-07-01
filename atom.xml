@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-01T07:58:26.596Z</updated>
+    <updated>2021-07-01T08:01:52.342Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -65,7 +65,8 @@
         <link href="https://520cxy.github.io/post/shu-jia/">
         </link>
         <updated>2021-06-29T00:23:17.000Z</updated>
-        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P2363">马农</a><br>
+        <content type="html"><![CDATA[<p><font size=6><strong>6.29:</strong></font><br>
+<a href="https://www.luogu.com.cn/problem/P2363">马农</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 标签给定的是dp，其实就是暴力枚举， 对于限定条件<font color=red>矩阵权值一样，且只有一个交点。</font>就可以直接枚举矩阵权值与交点；<br>
 先做二维矩阵和，再N<sup>2</sup>枚举交点，之后分情况枚举矩阵的权值和，开个数组存不同和的方案数，然后ans加过去就过了，而对于枚举的两个矩阵只有一个左上，一个右下；一个右上，一个左下这两种。<br>
@@ -76,7 +77,8 @@
 f<sub>i</sub> = h<sub>i</sub><sup>2</sup>+s<sub>i-1</sub>+min{a<sub>j</sub>h<sub>i</sub>+b<sub>j</sub>}<br>
 问题就转化为<font color=red>给定直线y<sub>j</sub>=a<sub>j</sub>x+b<sub>j</sub>,求当x=h<sub>i</sub>时，y<sub>j</sub>的最小值</font><br>
 而对于这样动态插入直线，维护最优解，我跟wcr学到了<strong>李超线段树</strong></p>
-<p><font size=6><strong>7.1 :</strong></font><br>
+<p><font size=6 color=red><strong>7.1 :</strong></font><br>
+<font color=red size=6><strong>！！！庆祝中国共产党建立100周年！！！</strong></font><br>
 <a href="https://www.luogu.com.cn/problem/P1773">符文之语</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需要划分的阶段（要加的括号），<br>
