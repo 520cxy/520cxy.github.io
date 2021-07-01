@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-06-25T12:23:15.510Z</updated>
+    <updated>2021-07-01T06:03:37.931Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,55 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[狗崽腿]]></title>
+        <id>https://520cxy.github.io/post/gou-zai-tui/</id>
+        <link href="https://520cxy.github.io/post/gou-zai-tui/">
+        </link>
+        <updated>2021-06-29T01:56:19.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P7115">[NOIP2020] 移球游戏</a><br>
+<font color = purple><strong>省选/NOI-</strong></font><br>
+<strong>好像就是大大大大大模拟</strong>， 利用栈的特性，对每列每种颜色构造出“全色列”，对于每次构造，我们采用一个空栈和一个满栈，我们枚举每次移动的颜色，记每列该颜色的数量为t<sub>1</sub>，那么每次先移动空栈前一个t<sub>1</sub>个球到空栈里，然后将当前栈里的当前颜色的移动到空栈前一个栈上，将其他颜色的球移动到空栈上；之后再把空栈上的n-t<sub>1</sub>个球放到当前栈上，之后我们我们看当前列的下一列，把这列当做当前列，再把当前列的其他颜色放到上一列上，然后当前颜色放到空列上，我们记这样的操作为一次操作。最后只要枚举颜色，在每个颜色进行枚举栈并循环操作就能分离所有颜色了。</p>
+<p>[Double Knapsack])(https://codeforces.com/problemset/problem/618/F)<br>
+<font color = black><strong>NOI/NOI+/CTSC</strong></font><br>
+显然先对每个集合内元素升序排序，做前缀和而要使他们的元素和相等，我们想到的肯定是选择每个集合内的某两个区间，<s>正确性显然</s>我们设<strong>c<sub>i</sub>表示最大的j使得s<sub>ai</sub>&gt;=s<sub>bj</sub></strong> 整理得：s<sub>ai</sub>-s<sub>b<sub>ci</sub></sub> &lt; b<sub>ci+1</sub><br>
+所以题目的差共有n+1种可能。再根据狗朝园里可知至少有两个差值是相等的之后就枚举就行了<br>
+哇，k掉了黑题！</p>
+<p><a href="https://atcoder.jp/contests/arc103/tasks/arc103_d">Distance Sums</a><br>
+<font color = purple><strong>省选/NOI-</strong></font><br>
+这题有个奇怪的结论，就是由于你的d是一定的，然后距离根最大的点肯定是叶子，而且这题中，根不是重心也在重心周围，我们对于每个距离就选择从叶子结点往上做，最后判断这是不是一棵树就行；</p>
+<p><a href="https://codeforces.com/problemset/problem/1495/C">CF1495C Garden of the Sun</a><br>
+<font color = blue><strong>提高+/省选-</strong></font><br>
+结论：每两行进行操作，先把第一列全染了，然后某两排X中间的某一排的第二列有X就会出锅，所以这种情况就把第二列全染成X</p>
+<p><a href="https://codeforces.com/problemset/problem/1408/F">CF1408F Two Different</a><br>
+<font color = blue><strong>提高+/省选-</strong></font><br>
+结论：当n为2次幂时，我们可以直接n log n 次选择两两染色，不为2次幂时，我们把n分为1<sub>2&lt;sup&gt;k&lt;/sup&gt;，和n-2&lt;sup&gt;k&lt;/sup&gt;+1</sub>n，两个区间进行操作，显然前面就按照结论操作，后面的那个区间，如果前面是一种颜色，后面是另一种颜色就做完了，k为最大2<sup>k</sup> &lt;= n</p>
+<p><a href="https://codeforces.com/problemset/problem/1333/E">CF1333E Road to 1600</a><br>
+<font color = purple><strong>省选/NOI-</strong></font><br>
+首先手推出一个3*3内，车一定比后优的矩阵</p>
+<blockquote>
+<p>{1， 5， 8<br>
+3， 6， 4<br>
+2， 9， 7}</p>
+</blockquote>
+<p>然后其他格子就填充后与车同级的路线，因为最后必定会进入这个3*3的矩阵内，这时后就被卡掉了，就保证了车的优秀</p>
+<p><a href="https://codeforces.com/problemset/problem/804/E">CF804E The same permutation</a><br>
+<font color = black><strong>NOI/NOI+/CTSC</strong></font><br>
+对于一个n， 如果%4=2||3就无解当n被4整除时，发现这些数4个一块，按照(1,2) (3,4) (1,4) (2,3) (1,3)(2,4) 交换刚好能把块内循环一次,而块与块之间的循环，我们设(x, y)表示第一块的x与第二块的y交换</p>
+<blockquote>
+<p>• (1,1) (2,2) (1,2) (2,1)<br>
+• (1,3) (2,4) (1,4) (2,3)<br>
+• (3,1) (4,2) (3,2) (4,1)<br>
+• (3,3) (4,4) (3,4) (4,3)</p>
+</blockquote>
+<p><a href="https://codeforces.com/problemset/problem/858/F">CF858F Wizard's Tour</a><br>
+<font color = purple><strong>省选/NOI-</strong></font><br>
+这题先考虑树的解法，对于每一个点，过程大致是这样的：先解决儿子的问题 -&gt;再解决当前点的问题-&gt; 把不能解决的问题留给父亲。<br>
+上述的解决问题就是指两条相邻边的匹配，可以发现，只有根节点一条边可能会匹配不到，其他的要么自己要么父亲都处理掉了，这种算法的正确性就很显然了，因为它构造出的答案已经达到了可能的答案上界。<br>
+拓展到图的情况，我们对每一个联通块都考虑它的生成树，我们把返祖边当作连向儿子的边处理即可，正确性可以用树的方法说明。<br>
+在具体实现中，我们把每一个点上未匹配的边存到p数组中，然后我们在访问儿子时需要把这条边删去，用网络流类似的方法。<strong>边数一开始记得赋1</strong></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[html]]></title>
         <id>https://520cxy.github.io/post/html/</id>
