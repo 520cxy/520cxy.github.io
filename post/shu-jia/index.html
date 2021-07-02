@@ -83,6 +83,21 @@ f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需�
 <p><a href="https://www.luogu.com.cn/problem/P1111">修复公路</a><br>
 <font color = yellow><strong>普及/提高-</strong></font><br>
 贪心从时间小的开始修，每修一条路，用并查集判断两个村是不是已经联通了，如果没有就合并，连接的村庄数量cnt++，当cnt==n-1就直接输出当前这条路的时间return 0，否则接着修，如果路修完就结束循环，puts(&quot;-1&quot;);</p>
+<p><font size=6>7.2:</font><br>
+<a href="https://www.luogu.com.cn/problem/P1991">无线通讯网</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+感觉写题面的人语文跟没学过一样，非要整这些花里胡哨的，看都看不懂，说白了就是在坐标系上给你p个点，然后要求全联通的距离最小，给了s就相当于你可以连接任意s/2对点并且代价为0，直接上克鲁斯卡尔，然后要让代价最小，我们肯定把距离最大的变为0，所以相当于最大的那s个点不用连了，只要边数==p-s就做完了，然后ans一直更新边权就行，还有就是建边的时候，每个点和其他的p-1个点都要建</p>
+<p><a href="https://www.luogu.com.cn/problem/P1346">电车</a><br>
+<font color = yellow><strong>普及/提高-</strong></font><br>
+题目中<strong>如果电车司机想走另一个轨道，他就必须下车切换开关的状态</strong>问最少下车几次，问题就转化为：对于任意一个路口，他可以花费0的代价到默认的路口，花费1的代价到其他路口，然后建图跑最短路就行</p>
+<p><a href="https://www.luogu.com.cn/problem/P2661">[NOIP2015 提高组] 信息传递</a><br>
+<font color = yellow><strong>普及/提高-</strong></font><br>
+题目中，游戏的结束定义为<strong>有人从别人口中得知自己的生日</strong>如果我们把一个信息看成一个节点，每个人为一棵树，每次传递信息就是合并两棵树，那么结束条件相当于<strong>有人的子节点为自己</strong>就是一个<strong>环</strong>的情况，可以进行的轮数就是<strong>图中最小环的长度</strong>，这道题只需要每次加一个点就建边，边加边做，然后如果i和t<sub>i</sub>的祖先不同，就更新深度与父节点，否则取min更新答案，最后输出最小长度就行</p>
+<p><a href="https://www.luogu.com.cn/problem/P1283">平板涂色</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+一道状压题，我们设f[i][j] = x,表示状态为x时，最后一次刷j色用的最少次数，s 的二进制的从右往左数的第 i 位（1/0）代表了（是/否）涂了第i块， 如果颜色相同就直接刷，否则次数加一<br>
+<img src="https://520cxy.github.io/post-images/1625197325448.png" alt="" loading="lazy"><br>
+还有就是刷的时候需要判断限界条件<strong>一个矩形只能在所有紧靠它上方的矩形涂色后，才能涂色</strong>所以在转移状态的时候要check一下<img src="https://520cxy.github.io/post-images/1625197483250.png" alt="" loading="lazy"></p>
 
                 </div>
             </article>
