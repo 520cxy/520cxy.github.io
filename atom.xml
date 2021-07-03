@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-03T03:20:02.345Z</updated>
+    <updated>2021-07-03T04:07:22.049Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -47,53 +47,9 @@ for(register int len = 1;len &lt;= n; ++len) {//枚举长度
 <img src="https://520cxy.github.io/post-images/1625270269425.png" alt="" loading="lazy"><br>
 结论关系：s[i][j-1]&lt;=s[i][j]&lt;=s[i+1][j]<br>
 <img src="https://520cxy.github.io/post-images/1625270776603.png" alt="" loading="lazy"><br>
-<a href="https://blog.csdn.net/noiau/article/details/72514812">证明详解</a></p>
-<pre><code class="language-c++">#include &lt;iostream&gt;
-#include&lt;cstring&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-#define INF 0x3f3f3f
-int dp[2005][2005];
-int sum[2005];
-int relation[2005][2005];
-int num[2005];
-int main() {
-	int n;
-	scanf(&quot;%d&quot;,&amp;n);
-	memset(sum,0,sizeof(sum));
-	memset(dp,0x3f,sizeof(dp));
-	for(int i = 1; i&lt;=n; i++) {
-		scanf(&quot;%d&quot;,&amp;num[i]);
-		dp[i][i] = 0;
-		relation[i][i] = i;
-		sum[i] = sum[i-1] + num[i];
-	}
-	for(int i = 1; i&lt;=n; i++) {
-		sum[i+n] = sum[i+n-1] +num[i];
-		relation[i+n][i+n] = i+n;//分割点初始化
-		dp[i+n][i+n] = 0;
-	}
-	for(int len = 1; len&lt;=n; len++) {
-		for(int j = 1; j+len&lt;=2*n; j++) {
-			int ends = j+len - 1;
-			for(int k = relation[j][ends-1]; k&lt;=relation[j+1][ends]; k++) { //k的范围
-				if(dp[j][ends]&gt;dp[j][k]+dp[k+1][ends]+sum[ends]-sum[j-1]) {
-					dp[j][ends]=dp[j][k]+dp[k+1][ends]+sum[ends]-sum[j-1];
-					relation[j][ends] = k;
-				}
-			}
-		}
-	}
-	int ans = 0xfffffff;//一定要开0xfffffff不然错QAQ
-	for(int i = 1; i&lt;=n; i++) {
-		ans = min(ans,dp[i][i+n-1]);
-	}
-	printf(&quot;%d\n&quot;,ans);
-	return 0;
-}
-</code></pre>
-<p>例题<a href="http://poj.org/problem?id=2955">Brackets</a><br>
+<a href="https://blog.csdn.net/noiau/article/details/72514812">证明详解</a><br>
+<img src="https://520cxy.github.io/post-images/1625282987592.png" alt="" loading="lazy"><br>
+例题<a href="http://poj.org/problem?id=2955">Brackets</a><br>
 如果两个括号匹配，那么它的状态就是<strong>该匹配成功的括号内的区间左右长度状态+2</strong>然后按照朴素方法做输出就行<br>
 if(s[i] 与 s[j]匹配） dp[i][j] = d[[i+1][j-1] +2;<br>
 dp[i][j] = max(dp[i][j],dp[i][k]+dp[k+1][j]);</p>
@@ -122,18 +78,12 @@ if(s[i] == s[j]) dp[i][j] = dp[i][j] +dp[i+1][j-1] +1; （思维）<br>
 <img src="https://520cxy.github.io/post-images/1625281778957.png" alt="" loading="lazy"><br>
 该方法为最朴素的算法<strong>O(VN)</strong><br>
 <font size=4><strong>空间优化</strong></font><br>
-先考虑上面讲的基本思路如何实现，肯定是有一个主循环i=1...N，每次算出来二维数组f[i][0...V]的所有值。那么，如果只用一个数组f[0...V]，能不能保证第i次循环结束后f[j]中表示的就是我们定义的状态f[i][j]呢？f[i][j]是由f[i−1][j]和f[i−1][j−w[i]]两个子问题递推而来，能否保证在推f[i][j]时（也即在第i次主循环中推f[j]时）能够得到f[i−1][j]和f[i−1][j−w[i]]的值呢？事实上，这要求在每次主循环中我们以j=V...0的顺序推f[j]，这样才能保证推f[j]时f[j−w[i]]保存的是状态f[i−1][j−w[i]]的值。至于为什么下面有详细解释。代码如下：</p>
-<pre><code class="language-c++">​for (register int i = 1; i &lt;= n; ++i)
-    for (register int j = V; j &gt;= 0; --j)
-        f[j] = max(f[j], f[j - w[i]] + v[i]);
-</code></pre>
-<p>其中的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[j]=max(f[j],f[j−w[i]])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span>一句恰就相当于我们的转移方程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[i][j]=max(f[i−1][j],f[i−1][j−w[i]])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span>，因为现在的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>就相当于原来的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i−1][j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>。如果将V的循环顺序从上面的逆序改成顺序的话，那么则成了f[i][j]由<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i][j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>推知，与本题意不符，但它却是另一个重要的背包问题（完全背包）最简捷的解决方案，故学习只用一维数组解01背包问题是十分必要的。<br>
-事实上，使用一维数组解01背包的程序在后面会被多次用到，以后的代码中就直接调用不再加以说明。</p>
-<pre><code class="language-c++">for (int i = 1; i &lt;= n; i++)
-    for (int j = V; j &gt;= w[i]; j--)
-        f[j] = max(f[j], f[j - w[i]] + v[i]);
-</code></pre>
-<p>注意这个过程里的处理与前面给出的代码有所不同。前面的示例程序写成j=V...0是为了在程序中体现每个状态都按照方程求解了，避免不必要的思维复杂度。而这里既然已经抽象成看作黑箱的过程了，就可以加入优化。费用为w[i]的物品不会影响状态f[0...j−1]，这是显然的。</p>
+先考虑上面讲的基本思路如何实现，肯定是有一个主循环i=1...N，每次算出来二维数组f[i][0...V]的所有值。那么，如果只用一个数组f[0...V]，能不能保证第i次循环结束后f[j]中表示的就是我们定义的状态f[i][j]呢？f[i][j]是由f[i−1][j]和f[i−1][j−w[i]]两个子问题递推而来，能否保证在推f[i][j]时（也即在第i次主循环中推f[j]时）能够得到f[i−1][j]和f[i−1][j−w[i]]的值呢？事实上，这要求在每次主循环中我们以j=V...0的顺序推f[j]，这样才能保证推f[j]时f[j−w[i]]保存的是状态f[i−1][j−w[i]]的值。至于为什么下面有详细解释。代码如下：<br>
+<img src="https://520cxy.github.io/post-images/1625282679127.png" alt="" loading="lazy"><br>
+其中的f[j]=max(f[j],f[j−w[i]])一句恰就相当于我们的转移方程f[i][j]=max(f[i−1][j],f[i−1][j−w[i]])，因为现在的f[j−w[i]]就相当于原来的f[i−1][j−w[i]]。如果将V的循环顺序从上面的逆序改成顺序的话，那么则成了f[i][j]由f[i][j−w[i]]推知，与本题意不符，但它却是另一个重要的背包问题（完全背包）最简捷的解决方案，故学习只用一维数组解01背包问题是十分必要的。<br>
+事实上，使用一维数组解01背包的程序在后面会被多次用到，以后的代码中就直接调用不再加以说明。<br>
+<img src="https://520cxy.github.io/post-images/1625282638813.png" alt="" loading="lazy"><br>
+注意这个过程里的处理与前面给出的代码有所不同。前面的示例程序写成j=V...0是为了在程序中体现每个状态都按照方程求解了，避免不必要的思维复杂度。而这里既然已经抽象成看作黑箱的过程了，就可以加入优化。费用为w[i]的物品不会影响状态f[0...j−1]，这是显然的。</p>
 ]]></content>
     </entry>
     <entry>
