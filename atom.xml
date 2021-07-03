@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-02T08:02:13.283Z</updated>
+    <updated>2021-07-03T03:20:02.345Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,132 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[灯泡！打牌！大炮！]]></title>
+        <id>https://520cxy.github.io/post/deng-pao-da-pai-da-pao/</id>
+        <link href="https://520cxy.github.io/post/deng-pao-da-pai-da-pao/">
+        </link>
+        <updated>2021-07-02T12:28:40.000Z</updated>
+        <content type="html"><![CDATA[<p>the shy告诉我dp联赛要一直考到状压，然后我想起来我dp一直不咋行，这可咋整<br>
+<font size=6><strong>区间DP</strong></font></p>
+<p><font size = 5>朴素模板O（n<sup>3</sup>）</font></p>
+<pre><code class="language-c++">
+for(register int len = 1;len &lt;= n; ++len) {//枚举长度
+        for(register int st = 1;st+len &lt;= n+1; ++st){//枚举起点，ends&lt;=n
+            register int ends = st+len - 1;
+            for(register int k = st;k &lt; ends; ++k){//枚举分割点，更新小区间最优解
+                dp[st][ends] = min(dp[st][ends],dp[st][k]+dp[k+1][ends]+something);
+            }
+        }
+}
+</code></pre>
+<p>例题：<a href="https://vjudge.net/problem/51Nod-1021">石子合并easy</a></p>
+<p><font size=5>题目变形，<strong>线性变环状</strong></font><br>
+思路：环状以后合并区间的情况就可以从后往前合并，最后合并完成可能是1<sub>n,2</sub>n<sub>1,3</sub>n~2.....这种n个石子合并的情况。所以我们可以破环成链，将前n-1各元素也放到n后面构成一个线性的环状序列，在对这个序列dp即可<br>
+例题：<a href="https://www.luogu.com.cn/problem/P1880">[NOI1995] 石子合并</a><br>
+大体思路与原题差不多，就是处理的时候前缀和在n后要接上1，2，3...然后状态转移时，起点要一直枚举到2*n，最后取最值时，枚举起点i从1~n，取f[i][n+i-1]要<strong>取一圈</strong></p>
+<p><font size=5>时间优化 <strong>四边形优化O(n<sup>2</sup>)</strong></font><br>
+思路：在查找最优分割点的时候，我们浪费了大量时间。那么我们可以把最优分割点保存下来，在查找的时候利用保存的最优分割点来优化查找过程。<br>
+四边形不等式优化：<br>
+（1）功能：用来寻找，s[i][j](i~j的最优分割点）与其他分割点的关系<br>
+（2）不等式内容：如果某东西满足a&lt;b&lt;=c&lt;d且f[a][c]+f[b][d]&lt;=f[a][d]+f[b][c],则说这个东西满足四边形不等式。简而言之：交叉小于包含！<br>
+（3）结论关系：s[i][j-1]&lt;=s[i][j]&lt;=s[i+1][j]<br>
+（4）证明过程：<br>
+0.证明w满足四边形不等式，这里w是m的附属量，形如m[i,j]=opt{m[i,k]+m[k,j]+w[i,j]}，此时大多要先证明w满足条件才能进一步证明m满足条件<br>
+1.证明m满足四边形不等式<br>
+2.证明s[i,j-1]≤s[i,j]≤s[i+1,j]<br>
+<img src="https://520cxy.github.io/post-images/1625270269425.png" alt="" loading="lazy"><br>
+结论关系：s[i][j-1]&lt;=s[i][j]&lt;=s[i+1][j]<br>
+<img src="https://520cxy.github.io/post-images/1625270776603.png" alt="" loading="lazy"><br>
+<a href="https://blog.csdn.net/noiau/article/details/72514812">证明详解</a></p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define INF 0x3f3f3f
+int dp[2005][2005];
+int sum[2005];
+int relation[2005][2005];
+int num[2005];
+int main() {
+	int n;
+	scanf(&quot;%d&quot;,&amp;n);
+	memset(sum,0,sizeof(sum));
+	memset(dp,0x3f,sizeof(dp));
+	for(int i = 1; i&lt;=n; i++) {
+		scanf(&quot;%d&quot;,&amp;num[i]);
+		dp[i][i] = 0;
+		relation[i][i] = i;
+		sum[i] = sum[i-1] + num[i];
+	}
+	for(int i = 1; i&lt;=n; i++) {
+		sum[i+n] = sum[i+n-1] +num[i];
+		relation[i+n][i+n] = i+n;//分割点初始化
+		dp[i+n][i+n] = 0;
+	}
+	for(int len = 1; len&lt;=n; len++) {
+		for(int j = 1; j+len&lt;=2*n; j++) {
+			int ends = j+len - 1;
+			for(int k = relation[j][ends-1]; k&lt;=relation[j+1][ends]; k++) { //k的范围
+				if(dp[j][ends]&gt;dp[j][k]+dp[k+1][ends]+sum[ends]-sum[j-1]) {
+					dp[j][ends]=dp[j][k]+dp[k+1][ends]+sum[ends]-sum[j-1];
+					relation[j][ends] = k;
+				}
+			}
+		}
+	}
+	int ans = 0xfffffff;//一定要开0xfffffff不然错QAQ
+	for(int i = 1; i&lt;=n; i++) {
+		ans = min(ans,dp[i][i+n-1]);
+	}
+	printf(&quot;%d\n&quot;,ans);
+	return 0;
+}
+</code></pre>
+<p>例题<a href="http://poj.org/problem?id=2955">Brackets</a><br>
+如果两个括号匹配，那么它的状态就是<strong>该匹配成功的括号内的区间左右长度状态+2</strong>然后按照朴素方法做输出就行<br>
+if(s[i] 与 s[j]匹配） dp[i][j] = d[[i+1][j-1] +2;<br>
+dp[i][j] = max(dp[i][j],dp[i][k]+dp[k+1][j]);</p>
+<p><a href="http://poj.org/problem?id=1651">Multiplication Puzzle</a><br>
+因为最后都要删掉中间所有的数字，所以我们分隔一个个小区间删数字，合并区间求最小。那么我们的状态就是目前删掉的数字区间，但是我们分割的时候的意思是抽一个卡片出来，所以这个卡片不能在已经抽出的状态里面，所以dp[i][j]里面是不包含j卡片的！<br>
+状态转移方程：dp[i][j]表示抽出第i~j-1张卡片时候的最小值<br>
+dp[i][j] = min(dp[i][j],dp[i][k] + dp[k+1][j] +num[i-1]*num[k]*num[j]);</p>
+<p>整数划分（四）<br>
+（1）题意：给出两个整数 n , m ,要求在 n 中加入m - 1 个乘号，将n分成m段，求出这m段的最大乘积<br>
+（2）思路：这里给的乘号是有限个，所以状态方程里必须包含使用乘号的个数，此外还要包含区间长度。所以怎么用二维dp实现包含m和n，我们可以用dp[i][j]表示在第1~i个字符里插入j个乘号的最大值。<br>
+（3）状态转移方程 dp[i][j]表示在第1<sub>i个字符里插入j个乘号的最大值；用num[i][j]表示第i</sub>j个字符表示的数字；<br>
+dp[i][j] = max(dp[i][j],dp[k][j-1]*num[k+1][i])</p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4632">Palindrome subsequence</a><br>
+(1)题意：给你一个字符串，求出其最多的可构成的回文字串（不要求连续），注：这里不同的回文字串只要求位置不同即可视为不同，如：aaaaa 的最多回文子串数目是 31.</p>
+<p>（2）思路：用dp[i][j]表示状态，表示i~j里最多的回文字串数目，假设现在我们要求dp[i][j]：</p>
+<p>a.首先：由前一个状态知：dp[i][j] = dp[i+1][j]并上dp[i][j-1] （因为区间尽可能大而且状态要在dp[i][j]之前，而且回文子串不要求 连续），由容斥原理得：dp[i+1][j] U dp[i][j-1] = dp[i+1][j]+dp[i][j-1] - dp[i+1][j] n dp[i][j-1]= dp[i+1[j]+dp[i][j-1] - dp[i+1][j-1]<br>
+注意：这是一个固定的状态，每一个状态都由这个公式推出初始状态，是必须的，不是可选择地<br>
+b.其次：如果s[i] == s[j] ,那么两端单独就可以构成回文子序列，而且与dp[i+1][j],dp[i][j-1],dp[i+1][j-1]，中的回文序列又可以构成新的回文序列，所以此时dp[i][j] = dp[i+1][j] U dp[i][j-1] + dp[i+1][j-1] +1;而dp[i][j]已经更新为 dp[i+1][j] U dp[i][j-1]，所以dp[i][j] = dp[i][j] + dp[i+1][j-1] +1;<br>
+(3)状态转移方程： dp[i][j]表示i~j内最多的回文字串数目<br>
+dp[i][j] = dp[i+1][j]+dp[i][j-1] -dp[i+1][j-1] (容斥）<br>
+if(s[i] == s[j]) dp[i][j] = dp[i][j] +dp[i+1][j-1] +1; （思维）<br>
+注：这里因为容斥时有减法，所以要先加上模再取模，要不会出现负数！</p>
+<p><font size=6><strong>背包DP</strong></font><br>
+<font size=5>01背包</font><br>
+该问题特点：每种物品只有一件，决策为放或不放，我们设子问题诶状态f[i][j]表示前i件物品放到容量为j的背包中的最大价值，那么对于一件物品i，代价w[i],价值v[i],<br>
+<img src="https://520cxy.github.io/post-images/1625281778957.png" alt="" loading="lazy"><br>
+该方法为最朴素的算法<strong>O(VN)</strong><br>
+<font size=4><strong>空间优化</strong></font><br>
+先考虑上面讲的基本思路如何实现，肯定是有一个主循环i=1...N，每次算出来二维数组f[i][0...V]的所有值。那么，如果只用一个数组f[0...V]，能不能保证第i次循环结束后f[j]中表示的就是我们定义的状态f[i][j]呢？f[i][j]是由f[i−1][j]和f[i−1][j−w[i]]两个子问题递推而来，能否保证在推f[i][j]时（也即在第i次主循环中推f[j]时）能够得到f[i−1][j]和f[i−1][j−w[i]]的值呢？事实上，这要求在每次主循环中我们以j=V...0的顺序推f[j]，这样才能保证推f[j]时f[j−w[i]]保存的是状态f[i−1][j−w[i]]的值。至于为什么下面有详细解释。代码如下：</p>
+<pre><code class="language-c++">​for (register int i = 1; i &lt;= n; ++i)
+    for (register int j = V; j &gt;= 0; --j)
+        f[j] = max(f[j], f[j - w[i]] + v[i]);
+</code></pre>
+<p>其中的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[j]=max(f[j],f[j−w[i]])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span>一句恰就相当于我们的转移方程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f[i][j]=max(f[i−1][j],f[i−1][j−w[i]])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span>，因为现在的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>就相当于原来的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mi mathvariant="normal">−</mi><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i−1][j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>。如果将V的循环顺序从上面的逆序改成顺序的话，那么则成了f[i][j]由<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">−</mi><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">f[i][j−w[i]]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span></span></span></span>推知，与本题意不符，但它却是另一个重要的背包问题（完全背包）最简捷的解决方案，故学习只用一维数组解01背包问题是十分必要的。<br>
+事实上，使用一维数组解01背包的程序在后面会被多次用到，以后的代码中就直接调用不再加以说明。</p>
+<pre><code class="language-c++">for (int i = 1; i &lt;= n; i++)
+    for (int j = V; j &gt;= w[i]; j--)
+        f[j] = max(f[j], f[j - w[i]] + v[i]);
+</code></pre>
+<p>注意这个过程里的处理与前面给出的代码有所不同。前面的示例程序写成j=V...0是为了在程序中体现每个状态都按照方程求解了，避免不必要的思维复杂度。而这里既然已经抽象成看作黑箱的过程了，就可以加入优化。费用为w[i]的物品不会影响状态f[0...j−1]，这是显然的。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[狗崽腿]]></title>
         <id>https://520cxy.github.io/post/gou-zai-tui/</id>
@@ -57,6 +183,23 @@
 上述的解决问题就是指两条相邻边的匹配，可以发现，只有根节点一条边可能会匹配不到，其他的要么自己要么父亲都处理掉了，这种算法的正确性就很显然了，因为它构造出的答案已经达到了可能的答案上界。<br>
 拓展到图的情况，我们对每一个联通块都考虑它的生成树，我们把返祖边当作连向儿子的边处理即可，正确性可以用树的方法说明。<br>
 在具体实现中，我们把每一个点上未匹配的边存到p数组中，然后我们在访问儿子时需要把这条边删去，用网络流类似的方法。<strong>边数一开始记得赋1</strong></p>
+<p><a href="https://codeforces.com/problemset/problem/1450/C2">CF1450C2 Errich-Tac-Toe (Hard Version)</a><br>
+<font color = blue><strong>提高+/省选-</strong></font><br>
+结论：如果我们能让连续的三个棋子中至少出现一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 和一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi></mrow><annotation encoding="application/x-tex">O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span>，那么就能避免三个连续相同棋子的情况，形成平局<br>
+（相当于我们需要选择间隔相同的 X XX 对角线与 O OO 对角线对棋盘进行分割，避免出现三个棋子同色的情况）<br>
+同一排或者同一列三个连续的棋子满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mi>j</mi><mo>)</mo><mi mathvariant="normal">%</mi><mn>3</mn><mo>=</mo><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">(i + j) \% 3 == 0, 1, 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mord">%</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span></span></span></span>因此我们可以按照 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo>+</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">( i + j ) % 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> 来对所有的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi></mrow><annotation encoding="application/x-tex">O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span></span></span></span> 进行统计，假设数量为X<sub>0</sub>,X<sub>1</sub>,X<sub>2</sub>,O<sub>0</sub>,O<sub>1</sub>,O<sub>2</sub><br>
+显然k=X<sub>0</sub>+X<sub>1</sub>+X<sub>2</sub>+O<sub>0</sub>+O<sub>1</sub>+O<sub>2</sub>,需要使得连续的三个棋子中出现一个X或O，那么我们需要在X<sub>0</sub>,X<sub>1</sub>,X<sub>2</sub>中选择一个并在O<sub>0</sub>,O<sub>1</sub>,O<sub>2</sub>中选择一个位置不同的进行修改，找到最小的X<sub>i</sub>+O<sub>j</sub>,满足X<sub>i</sub>+O<sub>j</sub>&lt;=⌊ <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>k</mi><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{k}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>⌋,最后根据选择的两个数字对棋盘棋子进行翻转输出就行</p>
+<p><a href="http://codeforces.com/problemset/problem/1494/D">Codeforces 1494D Dogeforces</a><br>
+<font color = blue><strong>提高+/省选-</strong></font><br>
+因为上级严格比下级大，把a[i][j]从小到大排序，然后就能从下往上构造了,并查集模拟一下<br>
+注意排序的同时，还要把i,j排序，也就是一堆相同的值中，先把i的全部给构造完了，这样就不会出现冲突了<br>
+我还是举个栗子<br>
+比如1 2 3 4都是父亲是5，但是你在排序的时候搞出了1 2父亲是5，然后处理3 4，发现他们的父节点都是他们自己，所以搞出个新节点父亲6，最后发现1,3的父亲还是权值和5,6一样，就会出问题，相当于多创建了一个点，但如果一开始排序就先 1 2 ,1 3,1 4,就会只有一个父亲5</p>
+<p><a href="http://codeforces.com/problemset/problem/1004/D">CF1004D Sonya and Matrix</a><br>
+<font color = purple><strong>省选/NOI-</strong></font><br>
+发现，当我们确定了0的横坐标时，其纵坐标也可以确定了，设 0的坐标为（x，y），矩阵的大小为（m，n），矩阵第一行第一列为（1，1）(在这里我们要把矩阵翻过来看）；设 a=x-1+y-1 , b=m-x +n-y;<br>
+则a表示0到（1，1）的距离，b表示0到m，n的距离，这里注意，很容易知道b的值就是输入数中最大的那一个，因为最大的那个数距离0是最远的。<br>
+将a=x-1+y-1 , b=m-x +n-y合并得 a=m+n-2-b;代入a=x-1+y-1中得到y=n+m-b-x; 如果 a[i] != 4*i,x=i;</p>
 ]]></content>
     </entry>
     <entry>
@@ -437,23 +580,6 @@ To_num[i]表示线段树中的i号节点对应的是原树中的位置<br>
 <a href="https://www.luogu.com.cn/problem/P3384">luogu P3384【模板】树链剖分</a><br>
 <a href="https://www.luogu.com.cn/problem/P2486">P2486 [SDOI2011]染色</a><br>
 <a href="https://www.luogu.com.cn/problem/P3313">P3313 [SDOI2014]旅行</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于Me]]></title>
-        <id>https://520cxy.github.io/post/about/</id>
-        <link href="https://520cxy.github.io/post/about/">
-        </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！</p>
-</blockquote>
-<h2 id="欢迎和我交朋友">欢迎和我交朋友！</h2>
-<h2 id="博猪是zj的一枚蒟蒻~~">👨‍💻 博猪是ZJ的一枚蒟蒻~~</h2>
-<h2 id="喜欢篮球篮球plmm">喜欢篮球，篮球，<s>plmm</s></h2>
-<h2 id="平常听华语歌其他歌都有听一点点而且我是三刺螈阿巴">平常听华语歌，其他歌都有听一点点，而且我是三刺螈阿巴</h2>
-<h2 id="你谷"><a href="https://www.luogu.com.cn/user/228866">你谷</a> qq 号：2949287507</h2>
-<h2 id="由于本人level原因文章里可能会出亿些锅发现了请联系下我哈">由于本人level原因，文章里可能会出亿些锅，发现了请联系下我哈</h2>
 ]]></content>
     </entry>
 </feed>
