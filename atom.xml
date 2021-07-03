@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-03T04:32:34.618Z</updated>
+    <updated>2021-07-03T06:17:06.699Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -18,18 +18,9 @@
         <updated>2021-07-02T12:28:40.000Z</updated>
         <content type="html"><![CDATA[<p>the shy告诉我dp联赛要一直考到状压，然后我想起来我dp一直不咋行，这可咋整<br>
 <font size=6><strong>区间DP</strong></font></p>
-<p><font size = 5>朴素模板O（n<sup>3</sup>）</font></p>
-<pre><code class="language-c++">
-for(register int len = 1;len &lt;= n; ++len) {//枚举长度
-        for(register int st = 1;st+len &lt;= n+1; ++st){//枚举起点，ends&lt;=n
-            register int ends = st+len - 1;
-            for(register int k = st;k &lt; ends; ++k){//枚举分割点，更新小区间最优解
-                dp[st][ends] = min(dp[st][ends],dp[st][k]+dp[k+1][ends]+something);
-            }
-        }
-}
-</code></pre>
-<p>例题：<a href="https://vjudge.net/problem/51Nod-1021">石子合并easy</a></p>
+<p><font size = 5>朴素模板O（n<sup>3</sup>）</font><br>
+<img src="https://520cxy.github.io/post-images/1625291612126.png" alt="" loading="lazy"><br>
+例题：<a href="https://vjudge.net/problem/51Nod-1021">石子合并easy</a></p>
 <p><font size=5>题目变形，<strong>线性变环状</strong></font><br>
 思路：环状以后合并区间的情况就可以从后往前合并，最后合并完成可能是1<sub>n,2</sub>n<sub>1,3</sub>n~2.....这种n个石子合并的情况。所以我们可以破环成链，将前n-1各元素也放到n后面构成一个线性的环状序列，在对这个序列dp即可<br>
 例题：<a href="https://www.luogu.com.cn/problem/P1880">[NOI1995] 石子合并</a><br>
