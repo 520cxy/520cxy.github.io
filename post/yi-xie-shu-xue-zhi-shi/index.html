@@ -94,8 +94,20 @@
 那么：<font size=4 color=green>馬媽再也不用担心指数爆炸啦，因为指数也能取模啦！！！</font></p>
 <p><font size=6 color=red>二次剩余和N次剩余</font><br>
 <font size=5 color=blue>二次剩余</font><br>
-<a href="https://www.luogu.com.cn/problem/P5491">例题</a></p>
-<p><font size=6 color=red >容斥：</font></p>
+<a href="https://www.luogu.com.cn/problem/P5491">例题</a><br>
+求解同余式<img src="https://520cxy.github.io/post-images/1619308559461.png" alt="" loading="lazy"><br>
+若同余式有解，我们称x是a模p意义下的二次剩余；若无解，我们称x是a模p意义下的非二次剩余<br>
+<strong>定理一：对于所求的二次同余式， 有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌊</mo></mrow><annotation encoding="application/x-tex">\lfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{p-1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.242216em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.897216em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌋</mo></mrow><annotation encoding="application/x-tex">\rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">⌋</span></span></span></span>个不同的解</strong><br>
+<strong>定理二：若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>o</mi><mi>d</mi><mo>(</mo><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">mod(p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span>, p=p<sub>1</sub>p<sub>2</sub>.....p<sub>k</sub>，则有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>1</sub>),<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>2</sub>)......<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>k</sub>)</strong></p>
+<p>引入<a href="https://en.wikipedia.org/wiki/Euler%27s_criterion">欧拉准则</a><br>
+这是一个用来判定的经典准则（其实勒让德符号的定义准确来说就是从这里定义的）<br>
+这里规定，当模数为奇素数的时候···（此处省略解释）<br>
+直接代入勒让德符号成为<br>
+<img src="https://520cxy.github.io/post-images/1619311696838.png" alt="" loading="lazy"></p>
+<p>对于判定模数为奇素数时，我们定义勒让德符号<br>
+<img src="https://520cxy.github.io/post-images/1619311092988.png" alt="" loading="lazy"><br>
+现在我们已经会判定了!!!tql!!!但是我们更多的是求这个值<s>大雾</s><br>
+假设我们已经判断完了，发现a是模p的二次剩余，那么其他的解也可以通过该解计算得出。</p>
 
                 </div>
             </article>
@@ -176,7 +188,142 @@
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="/media/live2d/js/message.js"></script>
-
+<script type="text/javascript">
+	function clickEffect() {
+		let balls = [];
+		let longPressed = false;
+		let longPress;
+		let multiplier = 0;
+		let width, height;
+		let origin;
+		let normal;
+		let ctx;
+		const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+		const canvas = document.createElement("canvas");
+		document.body.appendChild(canvas);
+		canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+		const pointer = document.createElement("span");
+		pointer.classList.add("pointer");
+		document.body.appendChild(pointer);
+	
+		if (canvas.getContext && window.addEventListener) {
+			ctx = canvas.getContext("2d");
+			updateSize();
+			window.addEventListener('resize', updateSize, false);
+			loop();
+			window.addEventListener("mousedown", function(e) {
+				pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+				document.body.classList.add("is-pressed");
+				longPress = setTimeout(function() {
+					document.body.classList.add("is-longpress");
+					longPressed = true;
+				}, 500);
+			}, false);
+			window.addEventListener("mouseup", function(e) {
+				clearInterval(longPress);
+				if (longPressed == true) {
+					document.body.classList.remove("is-longpress");
+					pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+					longPressed = false;
+				}
+				document.body.classList.remove("is-pressed");
+			}, false);
+			window.addEventListener("mousemove", function(e) {
+				let x = e.clientX;
+				let y = e.clientY;
+				pointer.style.top = y + "px";
+				pointer.style.left = x + "px";
+			}, false);
+		} else {
+			console.log("canvas or addEventListener is unsupported!");
+		}
+	
+	
+		function updateSize() {
+			canvas.width = window.innerWidth * 2;
+			canvas.height = window.innerHeight * 2;
+			canvas.style.width = window.innerWidth + 'px';
+			canvas.style.height = window.innerHeight + 'px';
+			ctx.scale(2, 2);
+			width = (canvas.width = window.innerWidth);
+			height = (canvas.height = window.innerHeight);
+			origin = {
+				x: width / 2,
+				y: height / 2
+			};
+			normal = {
+				x: width / 2,
+				y: height / 2
+			};
+		}
+		class Ball {
+			constructor(x = origin.x, y = origin.y) {
+				this.x = x;
+				this.y = y;
+				this.angle = Math.PI * 2 * Math.random();
+				if (longPressed == true) {
+					this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+				} else {
+					this.multiplier = randBetween(6, 12);
+				}
+				this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+				this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+				this.r = randBetween(8, 12) + 3 * Math.random();
+				this.color = colours[Math.floor(Math.random() * colours.length)];
+			}
+			update() {
+				this.x += this.vx - normal.x;
+				this.y += this.vy - normal.y;
+				normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+				normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+				this.r -= 0.3;
+				this.vx *= 0.9;
+				this.vy *= 0.9;
+			}
+		}
+	
+		function pushBalls(count = 1, x = origin.x, y = origin.y) {
+			for (let i = 0; i < count; i++) {
+				balls.push(new Ball(x, y));
+			}
+		}
+	
+		function randBetween(min, max) {
+			return Math.floor(Math.random() * max) + min;
+		}
+	
+		function loop() {
+			ctx.fillStyle = "rgba(255, 255, 255, 0)";
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.r < 0) continue;
+				ctx.fillStyle = b.color;
+				ctx.beginPath();
+				ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+				ctx.fill();
+				b.update();
+			}
+			if (longPressed == true) {
+				multiplier += 0.2;
+			} else if (!longPressed && multiplier >= 0) {
+				multiplier -= 0.4;
+			}
+			removeBall();
+			requestAnimationFrame(loop);
+		}
+	
+		function removeBall() {
+			for (let i = 0; i < balls.length; i++) {
+				let b = balls[i];
+				if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+					balls.splice(i, 1);
+				}
+			}
+		}
+	}
+	clickEffect();//调用
+	</script>
 </body>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
