@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-05T02:07:44.288Z</updated>
+    <updated>2021-07-05T07:30:01.421Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -205,6 +205,15 @@ f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需�
 <a href="https://www.luogu.com.cn/problem/P1525"> [NOIP2010 提高组] 关押罪犯</a><br>
 <font color=green><strong>普及+/提高</strong></font><br>
 先按危害从大到小排序，让危害大的罪犯在两个监狱里，那么，再结合敌人的敌人和自己在一个监狱的规律合并。当查找时发现其中两个罪犯不可避免地碰撞到一起时，只能将其输出并结束。没有冲突时一定输出0。</p>
+<p><a href="https://www.luogu.com.cn/problem/P2103">道路值守</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+看到数据范围N&lt;=500又跟最短路有关，那么首先就想到了弗洛伊德，时间5s内真的是，多多有余。题意翻译过来就是问你<strong>任意两点的最短路有几条</strong>有点像这题<font color=green><a href="https://www.luogu.com.cn/problem/P1144">最短路计数</a></font><s>绿题对各位dalao来说很简单吧/kk</s>不过感觉算法难度要最短路计数难一点，这道能有蓝估计是因为细节处理的比较麻烦，注意以下事项：</p>
+<blockquote>
+<p><strong>1.一开始弗洛伊德时，f[i][j]要初始化为原来的距离；<br>
+2.g[i][i]和f[i][i]都为0；<br>
+3.最后统计路径时要做完最短路以后统计，且枚举时要保证两点之间是直连的；<br>
+4.枚举一个终点j，再枚举一个k，如果k在i-j的最短路上，那么s[k]个方案要全放在ans[i][j]里</strong></p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
