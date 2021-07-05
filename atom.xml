@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-05T10:10:08.438Z</updated>
+    <updated>2021-07-05T23:33:58.471Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -209,11 +209,21 @@ f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需�
 <font color=blue><strong>提高+/省选-</strong></font><br>
 看到数据范围N&lt;=500又跟最短路有关，那么首先就想到了弗洛伊德，时间5s内真的是，多多有余。题意翻译过来就是问你<strong>任意两点的最短路有几条</strong>有点像这题<font color=green><a href="https://www.luogu.com.cn/problem/P1144">最短路计数</a></font><s>绿题对各位dalao来说很简单吧/kk</s>不过感觉算法难度要最短路计数难一点，这道能有蓝估计是因为细节处理的比较麻烦，注意以下事项：</p>
 <blockquote>
-<p><strong>1.一开始弗洛伊德时，f[i][j]要初始化为原来的距离；<br>
+<p>**1.一开始弗洛伊德时，f[i][j]要初始化为原来的距离；<br>
 2.g[i][i]和f[i][i]都为0；<br>
 3.最后统计路径时要做完最短路以后统计，且枚举时要保证两点之间是直连的；<br>
-4.枚举一个终点j，再枚举一个k，如果k在i-j的最短路上，那么s[k]个方案要全放在ans[i][j]里</strong></p>
+4.枚举一个终点j，再枚举一个k，<strong>如果k在i-j的最短路上，那么s[k]个方案要全放在ans[i][j]里</strong></p>
 </blockquote>
+<p><a href="https://www.luogu.com.cn/problem/P1280">尼克的任务</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+读入的时候，我们把当前时间点有任务就把任务放到改时间点内；<br>
+设f[i]表示i~n的最大空闲时间，那么倒着推，对于每个i，我们只有有任务或没任务两种状态，如果有任务就取max，f[i]=max(f[i],f[i+t])，t为某一个任务的持续时间，如果没有任务就是上一个时间点+1,f[i] = f[i+1]+1;</p>
+<p><a href="https://www.luogu.com.cn/problem/P5858">「SWTR-03」Golden Sword</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+对于每个状态，影响该状态的只有顺序和锅内原料数量有关，所以设f[i][j]表示放入第i个原料，锅内有j个原料时，所获得的最大耐久度，于是有f[i][j] = max(f[i][j], f[i-1][k])+j<em>a[i],其中j-1&lt;=k&lt;=min(m,j+s-1);但是这样的做法是O(nw<sup>2</sup>)的<br>
+考虑到j</em>a<sub>i</sub>是个定值，所以方程又可以简化为<br>
+f[i][j] = max(f[i][j], f[i-1][k])+a[i]*j<br>
+然后max里的数据是可以用<strong>单调队列优化</strong>的</p>
 ]]></content>
     </entry>
     <entry>
