@@ -83,7 +83,7 @@ f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需�
 <p><a href="https://www.luogu.com.cn/problem/P1111">修复公路</a><br>
 <font color = yellow><strong>普及/提高-</strong></font><br>
 贪心从时间小的开始修，每修一条路，用并查集判断两个村是不是已经联通了，如果没有就合并，连接的村庄数量cnt++，当cnt==n-1就直接输出当前这条路的时间return 0，否则接着修，如果路修完就结束循环，puts(&quot;-1&quot;);</p>
-<p><font size=6>7.2:</font><br>
+<p><font size=6><strong>7.2</strong>:</font><br>
 <a href="https://www.luogu.com.cn/problem/P1991">无线通讯网</a><br>
 <font color=green><strong>普及+/提高</strong></font><br>
 感觉写题面的人语文跟没学过一样，非要整这些花里胡哨的，看都看不懂，说白了就是在坐标系上给你p个点，然后要求全联通的距离最小，给了s就相当于你可以连接任意s/2对点并且代价为0，直接上克鲁斯卡尔，然后要让代价最小，我们肯定把距离最大的变为0，所以相当于最大的那s个点不用连了，只要边数==p-s就做完了，然后ans一直更新边权就行，还有就是建边的时候，每个点和其他的p-1个点都要建</p>
@@ -98,6 +98,10 @@ f[i][j]表示用前i个字符，满足最小乘积（对m取余后的）所需�
 一道状压题，我们设f[i][j] = x,表示状态为x时，最后一次刷j色用的最少次数，s 的二进制的从右往左数的第 i 位（1/0）代表了（是/否）涂了第i块， 如果颜色相同就直接刷，否则次数加一<br>
 <img src="https://520cxy.github.io/post-images/1625197325448.png" alt="" loading="lazy"><br>
 还有就是刷的时候需要判断限界条件<strong>一个矩形只能在所有紧靠它上方的矩形涂色后，才能涂色</strong>所以在转移状态的时候要check一下<img src="https://520cxy.github.io/post-images/1625197483250.png" alt="" loading="lazy"></p>
+<p><font size=6><strong>7.5</strong>:</font><br>
+<a href="https://www.luogu.com.cn/problem/P1525"> [NOIP2010 提高组] 关押罪犯</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+先按危害从大到小排序，让危害大的罪犯在两个监狱里，那么，再结合敌人的敌人和自己在一个监狱的规律合并。当查找时发现其中两个罪犯不可避免地碰撞到一起时，只能将其输出并结束。没有冲突时一定输出0。</p>
 
                 </div>
             </article>
