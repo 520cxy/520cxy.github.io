@@ -138,6 +138,14 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <p><a href="https://www.luogu.com.cn/problem/P2280">[HNOI2003]激光炸弹</a><br>
 <font color=green><strong>普及+/提高</strong></font><br>
 二维前缀和优化搜索枚举</p>
+<p><a href="https://www.luogu.com.cn/problem/UVA532">UVA532 Dungeon Master</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+暴力三维广搜</p>
+<p><a href="https://codeforces.com/problemset/problem/1006/F">Xor-Paths</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+思路：<strong>折半枚举</strong>，通过(1,1)dfs到(i,j)点的所有可能路径的所有结果，其中i+j<mark>max(n,m),将所有在(i,j)的结果存储起来；<br>
+反向枚举，从(n,m)dfs到(u,v)点的所有可能路径的结果，其中u+v</mark>max(n,m)+1；<br>
+然后从每一个(u,v)点开始匹配，根据结果枚举另一半可能结果，分别在(u-1,v)和(u,v-1)点上查找相应的结果，其中u-1+v=u+v-1=max(n,m),(u-1,v)和(u,v-1)点都是第一次dfs计算出来的结果</p>
 
                 </div>
             </article>
