@@ -60,7 +60,7 @@
 <font color=blue><strong>提高+/省选-</strong></font><br>
 标签给定的是dp，其实就是暴力枚举， 对于限定条件<font color=red>矩阵权值一样，且只有一个交点。</font>就可以直接枚举矩阵权值与交点；<br>
 先做二维矩阵和，再N<sup>2</sup>枚举交点，之后分情况枚举矩阵的权值和，开个数组存不同和的方案数，然后ans加过去就过了，而对于枚举的两个矩阵只有一个左上，一个右下；一个右上，一个左下这两种。<br>
-<img src="https://520cxy.github.io/post-images/1624926912914.png" alt="" loading="lazy"></p>
+<img src="https://520cxy.github.io/post-images/1625713851078.png" alt="" loading="lazy"></p>
 <p><a href="https://www.luogu.com.cn/problem/P4655">[CEOI2017]Building Bridges</a><br>
 <font color=purple><strong>省选/NOI-</strong></font><br>
 显然，对于第i个柱子，我们连接的代价为建桥代价+拆除代价：W<sub>总</sub> = (h<sub>i</sub>-h<sub>j</sub>)<sup>2</sup>+(s<sub>i-1</sub>-s<sub>j</sub>)， (j为上一个柱子端点)化简后得：W<sub>总</sub>=h<sub>i</sub><sup>2</sup>+h<sub>j</sub><sup>2</sup>-2h<sub>i</sub>h<sub>j</sub>+s<sub>i-1</sub>-s<sub>j</sub>，而影响对于i总代价的变量只有j，设a<sub>j</sub> = -2h<sub>j</sub>, b<sub>j</sub>=h<sub>j</sub>+f<sub>j</sub><sup>2</sup>-s<sub>j</sub>;<br>
@@ -166,6 +166,13 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <p>graph<br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 把一个方格看为一个点，先离线建图，然后如果两个点删边就合并，吧合并在一起的缩点，判断是否连通即可</p>
+<p><font size=6><strong>7.8 动态规划，贪心专项</strong>:</font><br>
+<a href="https://www.luogu.com.cn/problem/P5020"> [NOIP2018 提高组] 货币系统</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+结论：对于两个等价的货币系统A和B（A&gt;B），我们看成两个集合，那么A中能被其他数组成的数肯定不在B中，A中不能被其它数组成的数一定在B中，然后定义f[i]表示数i是否能被其他数组成，做完全背包</p>
+<p><a href="https://www.luogu.com.cn/problem/P4823"> [TJOI2013]拯救小矮人</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+对于每个小矮人，我们定义其<strong>逃生空间为H-a-b</strong>，显然逃生空间越小的越先要出去，不然后面就出不去了，所以先按逃生空间从大到小排序，之后我们定义f[i]表示走了i个小矮人之后其余小矮人组成的最高高度<img src="https://520cxy.github.io/post-images/1625711841865.png" alt="" loading="lazy">对于每个小矮人，我们选择让它走或者留下，显然能走的先走，如果走了j个人的高度f[j-1]加上自己的手长大于H，那么对于走了j个人的剩余最高高度就是max（走了j个人-自己的高度）</p>
 
                 </div>
             </article>
