@@ -173,6 +173,10 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <p><a href="https://www.luogu.com.cn/problem/P4823"> [TJOI2013]拯救小矮人</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 对于每个小矮人，我们定义其<strong>逃生空间为H-a-b</strong>，显然逃生空间越小的越先要出去，不然后面就出不去了，所以先按逃生空间从大到小排序，之后我们定义f[i]表示走了i个小矮人之后其余小矮人组成的最高高度<img src="https://520cxy.github.io/post-images/1625711841865.png" alt="" loading="lazy">对于每个小矮人，我们选择让它走或者留下，显然能走的先走，如果走了j个人的高度f[j-1]加上自己的手长大于H，那么对于走了j个人的剩余最高高度就是max（走了j个人-自己的高度）</p>
+<p><a href="https://www.luogu.com.cn/problem/P3959"> [NOIP2017 提高组] 宝藏</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+<strong>深搜加剪枝</strong> 普通枚举深搜肯定过不了，我们把能优化的全部优化下。<br>
+首先因为每个点总要扩展一条边，所以我们把最小的边找出来，是最优性剪枝，而且边权越小的最为解的可能性越大,然后在枚举的时候要把最优剪枝的影响去掉。之后深搜时，枚举扩展点最优性剪枝，如果当前解加上理论最小的费用都比中途的答案高那么这次搜索一定不是最优解，再重新标记回起点继续搜下去就行</p>
 
                 </div>
             </article>
