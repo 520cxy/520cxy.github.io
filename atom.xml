@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-08T23:11:10.365Z</updated>
+    <updated>2021-07-09T07:00:58.823Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -280,6 +280,21 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <font color=purple><strong>省选/NOI-</strong></font><br>
 <strong>深搜加剪枝</strong> 普通枚举深搜肯定过不了，我们把能优化的全部优化下。<br>
 首先因为每个点总要扩展一条边，所以我们把最小的边找出来，是最优性剪枝，而且边权越小的最为解的可能性越大,然后在枚举的时候要把最优剪枝的影响去掉。之后深搜时，枚举扩展点最优性剪枝，如果当前解加上理论最小的费用都比中途的答案高那么这次搜索一定不是最优解，再重新标记回起点继续搜下去就行</p>
+<p><font size=6><strong>7.9 动态规划，贪心专项</strong>:</font><br>
+<a href="https://codeforces.com/problemset/problem/727/F">F. Polycarp's problems</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+贪心维护一个大根堆。对于a[i]数组，你先倒序遍历，如果是负的就入堆，否则就把能抵消的负数给抵消，之后前缀和预处理区间，由于堆里存的都是负数，所以在计算前缀时要取反，这些负数取反后，从大到小排序的第i位代表了取到第i种答案，要删去1~i个数。二分查找即可</p>
+<p><a href="https://www.luogu.com.cn/problem/P5664?contestId=46497">[CSP-S2019] Emiya 家今天的饭</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+这题哇，真的差点搞得我心态炸裂，这个题面我看了一上午，这个题解给了个状态转移方程但是没给状态定义，什么东西啊<br>
+题意：给一个矩阵，从矩阵中取出k个数(k&gt;0)，每行只能取一个，每列的数最多取⌊2/k⌋个，有多少种方案<br>
+输出所有方案数对998244353取模<br>
+首先，很容易想到，维护每列选择节点的合法情况复杂度过高，<strong>用容斥的思想，我们反着做，那么合法方案数=总方案数-不合法方案数</strong>，总方案数输入的时候统计每行的总方案数在按乘法原理求就行，那么怎么求不合法方案数呢。<br>
+明显的，有且仅有一列是不合法的，因为选取了k个数，不可能出现两列选取的数&gt;=k/2，我们就考虑枚举不合法的列，<strong>定义f[i][j][k]表示前i行选j个节点，当前列选了k个的方案数</strong>，这样可以获得84分的高分。考虑优化：我们可以发现对于j和k，并不需要存储取j或k个的方案数，我们所关心的只是j和k的大小关系，所以我们可以将后面两维压成一维，对于限制条件k&gt;⌊j/2⌋-&gt;2k+n-j&gt;n,n-j就是n行中没有选的行数（j表示前i行中选了j个，而每行只能选1个，所以选了j行），<strong>因此对于每个节点，选就等价于该列选两次，某一行若不选，等价于所有列选一次</strong>状态转移跟上面差不多，f[i][j]表示选了i行，当前列选了j个方案数<br>
+<img src="https://520cxy.github.io/post-images/1625813809696.png" alt="" loading="lazy">不选当前列<br>
+<img src="https://520cxy.github.io/post-images/1625813854236.png" alt="" loading="lazy">不选当前行<br>
+<img src="https://520cxy.github.io/post-images/1625813886253.png" alt="" loading="lazy">选个当前点<br>
+最后统计一列方案数大于n的即可</p>
 ]]></content>
     </entry>
     <entry>
