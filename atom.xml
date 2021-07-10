@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-09T23:57:59.778Z</updated>
+    <updated>2021-07-10T07:31:22.402Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -298,6 +298,33 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <p><a href="https://www.luogu.com.cn/problem/P5023">[NOIP2018 提高组] 填数游戏</a><br>
 <font color=purple><strong>省选/NOI-</strong></font><br>
 <font color=red>打表找规律/kb</font></p>
+<p><font size=6 color=red><strong>7.10 爆弹%你赛</strong>:</font><br>
+T1：<br>
+原题<a href="https://codeforces.com/problemset/problem/1110/E">Magic Stones</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+题意：给两个序列，问A序列操作后能否变为B序列<br>
+每次操作可以选择一个i，(1&lt;i&lt;n)，将a<sub>i</sub>替换为a<sub>i-1</sub>+a<sub>i+1</sub>-a<sub>i</sub><br>
+模拟后发现，<strong>每次操作就是交换了a<sub>i+1</sub>-a<sub>i</sub>和a<sub>i</sub>-a<sub>i-1</sub></strong><br>
+于是先判首尾是否相同，然后判断差分数组是否相同即可</p>
+<p>T2：<br>
+<a href="https://codeforces.com/problemset/problem/1304/D"> Shortest and Longest LIS</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+这题我真的想给自己一拳，/baojin/baojin/baojin<br>
+以为自己只能拿部分分，也不知道怎么回事，数组就开了一部分，结果写出来是个正解！<br>
+题意：<br>
+给定序列每个元素的大小关系，构造两个序列分别是lis最大和最小；<br>
+这题一个个插我不会，首先构造出升序排列(lis最大)和降序排列(lis最小)，在采用冒泡差不多的思想判断大小关系，如果不满足就交换两个元素，因为交换后可能之前的数就不满足大小关系所以哈还要回头判断</p>
+<p>T3：<br>
+<a href="https://codeforces.com/problemset/problem/1225/E">Rock Is Push</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+题意：<br>
+二维平面上，有些格点上有箱子，可以推动箱子，且可以一次推动连续的直线上的箱子，但不能把箱子推到外面，问从起点（1，1）到（n，m）的方案数<br>
+40分暴力：<br>
+如果没箱子就是简单的递推，否则就深搜模拟，可以发现，推箱子就是把第一个箱子放到该方向上的第一个空位处，然后搜索下一个点再回溯就行</p>
+<p>T4<br>
+<a href="https://codeforces.com/problemset/problem/983/E">NN country</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+链的情况：倍增跳跃，然后处理最短路</p>
 ]]></content>
     </entry>
     <entry>
