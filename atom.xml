@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-10T08:18:03.745Z</updated>
+    <updated>2021-07-11T23:32:25.168Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -325,6 +325,9 @@ T1：<br>
 <a href="https://codeforces.com/problemset/problem/983/E">NN country</a><br>
 <font color=purple><strong>省选/NOI-</strong></font><br>
 链的情况：倍增跳跃，然后处理最短路</p>
+<p><font size=6 color=green><strong>7.11</strong></font><br>
+<font color=green><strong>THE NEXT.</strong></font></p>
+<p><font size=6><strong>7.12</strong></font></p>
 ]]></content>
     </entry>
     <entry>
