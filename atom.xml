@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-12T08:26:44.291Z</updated>
+    <updated>2021-07-12T08:29:02.334Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -298,7 +298,7 @@ s[ i ][0]与s[ i ][1]存点的坐标，s[ i ][2]存点的分值，s[ i ][3]存�
 <p><a href="https://www.luogu.com.cn/problem/P5023">[NOIP2018 提高组] 填数游戏</a><br>
 <font color=purple><strong>省选/NOI-</strong></font><br>
 <font color=red>打表找规律/kb</font></p>
-<p><font size=6 color=red><strong>7.10 爆弹%你赛</strong>:</font><br>
+<p><font size=6 ><strong>7.10 爆弹%你赛</strong>:</font><br>
 T1：<br>
 原题<a href="https://codeforces.com/problemset/problem/1110/E">Magic Stones</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
