@@ -224,7 +224,16 @@ T1：<br>
 链的情况：倍增跳跃，然后处理最短路</p>
 <p><font size=6 color=green><strong>7.11</strong></font><br>
 <font color=green><strong>THE NEXT.</strong></font></p>
-<p><font size=6><strong>7.12</strong></font></p>
+<p><font size=6><strong>7.12 并查集+链表+堆</strong></font><br>
+<a href="https://www.luogu.com.cn/problem/P1801">黑匣子</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+使用对顶堆，即一个大根堆和一个小根堆，若我们形象地将小根堆放到大根堆上面，并<strong>保证小根堆里的任何数都比大根堆里的数大</strong>，那么就会发现，<strong>这两推整体从上往下一次递减</strong>，然后每次把数加入大根堆，当大根堆的数量等于i时，就不断把大根堆的根移到小根堆里，因为整体是从上到下依次递减，所以意味着只要大根堆里的数有i个，那么意味着<strong>大根堆的顶处于整体的第i小</strong>，所以每次询问输出大根堆堆顶后，再把小根堆的根移到大根堆里，因为i+1了，要保证大根堆的数量为i（此时的i+1）</p>
+<p><a href="https://www.luogu.com.cn/problem/P1196">[NOI2002] 银河英雄传说</a><br>
+<font color=green><strong>普及+/提高</strong></font><br>
+难点就是在于求距离定义一个数组d[]，d[i]表示i到他父节点的距离，那么一开始每个d[i]都为0，只需要<strong>在搜索其父节点时，将每个d[i]加上其父节点的d，即该节点到其父节点的距离加上其父节点到该父节点的父节点距离</strong>，所以当我们找到了一个点的祖先时也完成了更新其到祖先的距离，最后输出就是abs(d[x]-d[y])-1</p>
+<p><a href="https://www.luogu.com.cn/problem/P3452"> [POI2007]BIU-Offices</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+<strong>求一个图补图的联通个数</strong>，首先我们按照原图建图，然后再用链表连接每个点，之后跑图枚举每个节点，如果是没标记过的就开一个联通块并放入队列，在链表里删掉这个点，然后枚举这个节点能够扩展的节点，只要扩展的节点是补图没跑过的就打标记，之后在链表上跑，跑到原图不能跑到的就标记并放入队列，在链表上删除该节点，跑完之后排序输出就行</p>
 
                 </div>
             </article>
