@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-12T09:47:38.081Z</updated>
+    <updated>2021-07-13T06:28:54.325Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -340,6 +340,21 @@ T1：<br>
 <p><a href="https://codeforces.com/problemset/problem/865/D">CF865D Buy Low Sell High</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 反悔贪心，把每个股票当成一个选项，然后放入小根堆，每次跟最小的比，受益最大的拿出就行</p>
+<p><font size=6><strong>7.13 构造题专项</strong></font><br>
+<a href="http://codeforces.com/problemset/problem/482/A">CF482A Diverse Permutation</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+首先发现，序列长度n对序列没多少限制，唯一限制就是k，我们设一个序列长n<br>
+当k=1时，显然依次递增或递减，<br>
+k=2时，可以构造出1, n, n-1, n-2.....<br>
+k=3: 1, n, 2, 3 ......<br>
+直接可以构造1, n, 2, n-1, 3, n-2.......<br>
+<strong>只要满足前k个数相间插入，然后m之后递增或递减即可</strong></p>
+<p><a href="http://codeforces.com/problemset/problem/468/C">CF468C Hack it!</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+推式子题，最后推出p=81*10<sup>18</sup>%a</p>
+<p><a href="https://www.luogu.com.cn/problem/P3557"> [POI2013]GRA-Tower Defense Game</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+题目给定限制，<strong>k个攻击距离为1的塔可以覆盖整张图</strong>，所以对于图上的<strong>每个点距离为1就有一个旧塔</strong>，且<strong>对于任意一个点，要么是没攻击到的要么就是旧的塔</strong>，所以我们找到一个点进行扩展，可扩展到没有的点就放上塔，就是一组解</p>
 ]]></content>
     </entry>
     <entry>
