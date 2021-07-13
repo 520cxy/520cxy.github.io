@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-13T10:49:26.337Z</updated>
+    <updated>2021-07-13T12:22:17.233Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -340,9 +340,11 @@ T1：<br>
 <p><a href="https://codeforces.com/problemset/problem/865/D">CF865D Buy Low Sell High</a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 反悔贪心，把每个股票当成一个选项，然后放入小根堆，每次跟最小的比，受益最大的拿出就行</p>
-<p><a href="http://codeforces.com/problemset/problem/449/C">CF449C Jzzhu and Apples</a><br>
+<p><font size=6><strong>7.12 构造题</strong></font><br>
+<a href="http://codeforces.com/problemset/problem/449/C">CF449C Jzzhu and Apples</a><br>
 <font color=purple><strong>省选/NOI-</strong></font><br>
 质因数从大到小，偶数情况就匹配，技术情况就删除，保证最优</p>
+<p>写的没保存，全没了？！</p>
 ]]></content>
     </entry>
     <entry>
