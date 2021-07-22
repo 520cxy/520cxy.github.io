@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-16T06:59:55.780Z</updated>
+    <updated>2021-07-22T02:53:09.091Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -379,6 +379,18 @@ if (A[i] == B[i]) Dp[i] = (i == 1 ? 0 : Dp[i - 1]);<br>
 至此，只含1,2操作的情况就处理完了，接下来考虑3操作<br>
 对于图上的每个点(代表着一种操作)，维护一个mul属性，表示执行一次这个操作会给累计的积乘上多少<br>
 <strong>对于1类操作，它的mul=1；对于2类操作，它的mul就等于它要乘上的值；而对于3类操作，它的mul等于它直接连向的所有点的mul之积按照拓扑序倒序扫一遍或者直接dfs即可处理出mul</strong>。然后倒着进行q 次操作，就可以求得每次操作(类型1或3)带着多少系数，记作sum，然后再把类型3的节点的sum下传到它所包含的类型1节点即可。但是有些类型3的操作既包含加法又包含乘法怎么办？考虑这样一张图 假设编号为1的操作的sum是x，那么+2这个操作的sum应该额外增加 3x同理+1的sum应增加 12x。所以下传sum时，假设一个点 x 的sum是 S，它的儿子是 y1,y2....yk,那么yi的sum就应该增加 S 乘上y<sub>i+1</sub>∼yk的mul之积最后，让数组的每个元素乘上所有 q 次操作的mul，再遍历所有加法操作计算应该加多少即可</p>
+<p><font size=6><strong>7.17 爆蛋%你赛</strong></font><br>
+T1:<br>
+题意：两个从1~n标号的序列，给出m个不可匹配的关系，问两序列之间最多可以配对的对数<br>
+简单模拟后已经数据范围可以得出，答案不是n就是n-1， 对于每个</p>
+<p>咕了五天/ww，以后回来补<br>
+<font size=6><strong>7.22 string</strong></font><br>
+<a href="https://www.luogu.com.cn/problem/P7114">[NOIP2020] 字符串匹配</a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+由于最后一个字符串肯定是C所以我们只需要知道AB的循环节即可，直接枚举AB循环长度，而AB以及其前缀，我们直接用哈希判断即可，主要就是<strong>将题目中的ABAB.....将AB看做整体Z,变为ZZZZZ...C</strong>之后开桶记录每种出现基数词的字符出现的次数有几个前缀，枚举i时把桶的前缀和加到一起</p>
+<p><a href="https://codeforces.com/problemset/problem/1326/D2">Prefix-Suffix <strong>Palindrome</strong></a><br>
+<font color=blue><strong>提高+/省选-</strong></font><br>
+如果该字符串本身有回文部分，<strong>答案显然为前缀+一段奇怪的字符+后缀</strong>。对于求那段奇怪的字符，我们将回文部分去掉得到新的字符串s,然后得到它的反串s',我们创造两个字符串s1 = s+&quot;一些奇怪的东西&quot;+s', s2=s'+&quot;一些奇怪的东西&quot;+s,之后发现，<strong>最长的回文串的前缀和后缀，分别为s1和s2的最长公共前后缀</strong>，所以构造出后跑kmp即可</p>
 ]]></content>
     </entry>
     <entry>
