@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-22T02:55:28.253Z</updated>
+    <updated>2021-07-22T03:13:28.759Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -391,6 +391,9 @@ T1:<br>
 <p><a href="https://codeforces.com/problemset/problem/1326/D2">Prefix-Suffix <strong>Palindrome</strong></a><br>
 <font color=blue><strong>提高+/省选-</strong></font><br>
 如果该字符串本身有回文部分，<strong>答案显然为前缀+一段奇怪的字符+后缀</strong>。对于求那段奇怪的字符，我们将回文部分去掉得到新的字符串s,然后得到它的反串s',我们创造两个字符串s1 = s+&quot;一些奇怪的东西&quot;+s', s2=s'+&quot;一些奇怪的东西&quot;+s,之后发现，<strong>最长的回文串的前缀和后缀，分别为s1和s2的最长公共前后缀</strong>，所以构造出后跑kmp即可</p>
+<p><a href="https://www.luogu.com.cn/problem/P4551?contestId=47632">最长异或路径</a><br>
+<font color=purple><strong>省选/NOI-</strong></font><br>
+首先要知道，<strong>一个数异或两次不变</strong>，然后将每个数丢进去做01tire树，那么i~j的异或和就可以转化为i到根的异或和异或j到跟的异或和，对于每次异或，贪心选择有贡献的那条路径，最后题目就变成了ai中选取两个数异或和最大</p>
 ]]></content>
     </entry>
     <entry>
