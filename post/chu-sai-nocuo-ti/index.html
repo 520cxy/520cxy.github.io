@@ -9,46 +9,19 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
-    <link rel="stylesheet" href="/media/css/index.css">
+    <link rel="stylesheet" href="/media/css/post.css">
     <link rel="stylesheet" href="/media/live2d/css/live2d.css" />
     
-    <style>
-        #centerbg{
-            background-image: url(https://p6-tt-ipv6.byteimg.com/origin/pgc-image/11bc38cd8833456586a38a347f571383);
-        }
-    </style>
 </head>
-<body class=" mdui-loaded">
-<header class="mdui-toolbar mdui-color-theme mdui-appbar-fixed mdui-appbar-scroll-toolbar-hide" style="z-index: 1000">
+<body class=" mdui-appbar-with-toolbar  mdui-theme-primary-pink mdui-theme-accent-pink">
+<header class="mdui-toolbar mdui-color-pink mdui-appbar-fixed mdui-appbar-scroll-toolbar-hide" style="z-index: 1000">
     <a href="javascript:;" mdui-drawer="{target: '#left-drawer',overlay:true}" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
     <span class="mdui-typo-title">LL.的小窝</span>
     <div class="mdui-toolbar-spacer"></div>
 <!--    <a href="javascript:history.go(0);" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
     <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
 </header>
-<div class="meteor">
-    <div class="red" style="left:600px;"></div>
-    <div class="orange" style="left:700px;"></div>
-    <div class="yellow" style="left:900px;"></div>
-    <div class="green" style="left:1100px;"></div>
-    <div class="cyan" style="left:1260px;"></div>
-    <div class="blue" style="left:1400px;"></div>
-    <div class="purple" style="left:1500px;"></div>
-    <div class="red" style="left:0px;"></div>
-    <div class="orange" style="left:100px;"></div>
-    <div class="yellow" style="left:300px;"></div>
-    <div class="green" style="left:500px;"></div>
-    <div class="cyan" style="left:660px;"></div>
-    <div class="blue" style="left:800px;"></div>
-    <div class="purple" style="left:900px;"></div>
-    <div class="red" style="left:1200px;"></div>
-    <div class="orange" style="left:1300px;"></div>
-    <div class="yellow" style="left:1500px;"></div>
-    <div class="green" style="left:1700px;"></div>
-    <div class="cyan" style="left:1860px;"></div>
-    <div class="blue" style="left:2000px;"></div>
-    <div class="purple" style="left:2100px;"></div>
-</div>
+
 <div class="mdui-drawer mdui-color-white mdui-drawer-full-height mdui-drawer-close" id="left-drawer">
     <ul class="mdui-list">
         <li class="mdui-subheader">菜单</li>
@@ -72,90 +45,63 @@
     </ul>
 </div>
 
-<div class="headertop filter-grid" style="height: auto">
-    <figure id="centerbg" class="centerbg" style="">
-        <div class="focusinfo">
-            <div class="header-tou">
-                <a href=">">
-                    <img src="/images/avatar.png">
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
+            <article id="post-1270" class="post-1270 post type-post status-publish format-standard hentry category-90 category-129 tag-149">
+                <header class="entry-header">
+                    <h1 class="entry-title">初赛の错题</h1>
+                    <p class="entry-census">发布于 2021-08-31</p>
+                    <hr>
+                </header>
+                <div class="neko">
+                    <p><font size=5><strong>csp-2020</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630409809561.png" alt="" loading="lazy"></p>
+<p><font color=red>正确答案：90G</font><br>
+<font color=blue>1字节=8b, 32/8=4,一个像素是32位真彩色，也就是一个像素占4个字节，1M=1024x1024b, 1G=1024x1024x1024b, 8min=8*60s,<br>
+8x60x24x4x2048x1024/(1024x1024x1024)=90G</font></p>
+<p><img src="https://520cxy.github.io/post-images/1630411366523.png" alt="" loading="lazy"><br>
+<font color=red>正确答案：O(n+e)</font><br>
+<font color=blue>深搜为遍历每个点后沿着该点的边继续遍历，所以遍历了所有点和边</font></p>
+<p><font color=red>没有优先队列优化的迪杰斯特拉复杂度为O(n^2)，优化过为O(nlogn)</font><br>
+<font color=red>1948年，克劳德·香农(Claude Shannon)将热力学中的熵引入信息通信领域，标志着信息论研究的开端</font></p>
+<p><font size=5><strong>2010</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630579085016.png" alt="" loading="lazy"><br>
+<font color=red>高速缓存</font></p>
+<p><font size=5><strong>csp-2019</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630583142648.png" alt="" loading="lazy"></p>
+<p><img src="https://520cxy.github.io/post-images/1630583169522.png" alt="" loading="lazy"><br>
+强制类型转换，加0.5再转成int是四舍五入常用操作</p>
+<p><img src="https://520cxy.github.io/post-images/1630583304509.png" alt="" loading="lazy"><br>
+高斯求和可以算出8个点最多有28条边，此时是连通图，但是<strong>题目要求不连通</strong>，再加一个点</p>
+<p><img src="https://520cxy.github.io/post-images/1630583377048.png" alt="" loading="lazy"><br>
+第1、2位有（0、1、8、6、9）五个数字，第3位有（0、1、8）三个数字，第4、5位由第1、2位决定。由于0,1,8模3正好余0,1,2，所以其他位确定则第3位自然确定，共5*5=25种。</p>
+
+                </div>
+            </article>
+        </main>
+    </div>
+    <div class="doc-footer-nav mdui-color-theme">
+        <div class="mdui-container">
+            <div class="mdui-row">
+                
+                <div class="mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left"></div>
+                
+                
+                <a href="https://520cxy.github.io/post/deng-pao-da-pai-da-pao/" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
+                    <div class="doc-footer-nav-text">
+                        <i class="mdui-icon material-icons">arrow_forward</i>
+                        <span class="doc-footer-nav-direction">下一篇文章</span>
+                        <div class="doc-footer-nav-chapter">灯泡！打牌！大炮！</div>
+                    </div>
                 </a>
-            </div>
-            <div class="header-info">
-                <p>共道人间惆怅事,不知今夕是何年 ——《周秦行纪》</p>
-            </div>
-            <div class="top-social">
                 
-                
-                
-                 
-                
-                
-                
-                
-
-            </div>
-        </div>
-    </figure>
-</div>
-<div class="mdui-container">
-    <div class="mdui-row mdui-row-gapless">
-        <div class="k-container">
-            <div class="head_card-offset"></div>
-            <div class="head_card-offset"></div>
-            
-    <div class="mdui-card">
-        <div class="mdui-card-media">
-            <img src="https://520cxy.github.io/post-images/42-solution.png"/>
-            <div class="mdui-card-media-covered">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">4.2 Solution</div>
-                    <div class="mdui-card-primary-subtitle"></div>
-                </div>
-                <div class="mdui-card-actions" style="float:right;">
-                    <a href="https://520cxy.github.io/post/42-solution/" class="mdui-btn mdui-ripple mdui-ripple-white">点击查看</a>
-                </div>
             </div>
         </div>
     </div>
-    <div class="head_card-offset"></div>
-
-    <div class="mdui-card">
-        <div class="mdui-card-media">
-            <img src="https://520cxy.github.io/post-images/yi-xie-shu-xue-zhi-shi.png"/>
-            <div class="mdui-card-media-covered">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">一些数学芝士</div>
-                    <div class="mdui-card-primary-subtitle"></div>
-                </div>
-                <div class="mdui-card-actions" style="float:right;">
-                    <a href="https://520cxy.github.io/post/yi-xie-shu-xue-zhi-shi/" class="mdui-btn mdui-ripple mdui-ripple-white">点击查看</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="head_card-offset"></div>
-
-    <div class="mdui-card">
-        <div class="mdui-card-media">
-            <img src="https://520cxy.github.io/post-images/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan.png"/>
-            <div class="mdui-card-media-covered">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">Re:树链剖分的起源之战</div>
-                    <div class="mdui-card-primary-subtitle"></div>
-                </div>
-                <div class="mdui-card-actions" style="float:right;">
-                    <a href="https://520cxy.github.io/post/reshu-lian-pou-fen-de-qi-yuan-zhi-zhan/" class="mdui-btn mdui-ripple mdui-ripple-white">点击查看</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="head_card-offset"></div>
-
-
-        </div>
-    </div>
-    <div class="mdui-row">
-    </div>
+    <br>
+    
+    <div class="comment"></div>
 </div>
 <footer class="mdui-container footer ">
     <div class="head_card-offset"></div>
@@ -342,5 +288,23 @@
 	</script>
 </body>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
-<script src="/media/js/index.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    $('.comment').bind('DOMNodeInserted',()=>{
+        $('.comment').unbind()
+
+        $('.vbtn').addClass(' mdui-btn mdui-color-theme-accent mdui-ripple')
+    })
+
+    let valine = new Valine({
+        el: '.comment',
+        
+        
+        
+        path: window.location.pathname,
+        pageSize: 30,
+        avatar:'mm',
+        notify:true
+    })
+</script>
 </html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-07-22T03:20:42.486Z</updated>
+    <updated>2021-09-02T11:58:11.263Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[初赛の错题]]></title>
+        <id>https://520cxy.github.io/post/chu-sai-nocuo-ti/</id>
+        <link href="https://520cxy.github.io/post/chu-sai-nocuo-ti/">
+        </link>
+        <updated>2021-08-31T09:11:03.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=5><strong>csp-2020</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630409809561.png" alt="" loading="lazy"></p>
+<p><font color=red>正确答案：90G</font><br>
+<font color=blue>1字节=8b, 32/8=4,一个像素是32位真彩色，也就是一个像素占4个字节，1M=1024x1024b, 1G=1024x1024x1024b, 8min=8*60s,<br>
+8x60x24x4x2048x1024/(1024x1024x1024)=90G</font></p>
+<p><img src="https://520cxy.github.io/post-images/1630411366523.png" alt="" loading="lazy"><br>
+<font color=red>正确答案：O(n+e)</font><br>
+<font color=blue>深搜为遍历每个点后沿着该点的边继续遍历，所以遍历了所有点和边</font></p>
+<p><font color=red>没有优先队列优化的迪杰斯特拉复杂度为O(n^2)，优化过为O(nlogn)</font><br>
+<font color=red>1948年，克劳德·香农(Claude Shannon)将热力学中的熵引入信息通信领域，标志着信息论研究的开端</font></p>
+<p><font size=5><strong>2010</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630579085016.png" alt="" loading="lazy"><br>
+<font color=red>高速缓存</font></p>
+<p><font size=5><strong>csp-2019</strong></font><br>
+<img src="https://520cxy.github.io/post-images/1630583142648.png" alt="" loading="lazy"></p>
+<p><img src="https://520cxy.github.io/post-images/1630583169522.png" alt="" loading="lazy"><br>
+强制类型转换，加0.5再转成int是四舍五入常用操作</p>
+<p><img src="https://520cxy.github.io/post-images/1630583304509.png" alt="" loading="lazy"><br>
+高斯求和可以算出8个点最多有28条边，此时是连通图，但是<strong>题目要求不连通</strong>，再加一个点</p>
+<p><img src="https://520cxy.github.io/post-images/1630583377048.png" alt="" loading="lazy"><br>
+第1、2位有（0、1、8、6、9）五个数字，第3位有（0、1、8）三个数字，第4、5位由第1、2位决定。由于0,1,8模3正好余0,1,2，所以其他位确定则第3位自然确定，共5*5=25种。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[灯泡！打牌！大炮！]]></title>
         <id>https://520cxy.github.io/post/deng-pao-da-pai-da-pao/</id>
@@ -648,67 +677,6 @@ DP很很好写——xhf dalao</font><br>
 当i不启动时，方案为子树的f值得积<br>
 最后的答案是森林中每一个根的f值之积。<br>
 <img src="https://520cxy.github.io/post-images/1617330304397.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一些数学芝士]]></title>
-        <id>https://520cxy.github.io/post/yi-xie-shu-xue-zhi-shi/</id>
-        <link href="https://520cxy.github.io/post/yi-xie-shu-xue-zhi-shi/">
-        </link>
-        <updated>2021-04-01T06:34:13.000Z</updated>
-        <content type="html"><![CDATA[<p><font size=6 color=red></font><br>
-<font size=6 color=purple>前置芝士</font></p>
-<blockquote>
-<p>1.阶：若a, p互质, 使a<sup>l</sup> % p==1,的最小正整数l定义为a模p意义下的阶, 记作ord<sub>p</sub> a；<br>
-2.欧拉函数：给出一个正整数x，函数值np定义为0~x内与x互质的数的个数，记作φ(x)=n<br>
-3.欧拉定理：a<sup>φ(p)</sup> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span> 1(mod p)</p>
-</blockquote>
-<p><font size=6 color=red >原根：</font><br>
-<font size=4 color=blue>定义：</font></p>
-<blockquote>
-<p>那么<font color=red>若ord<sub>p</sub>a=φ(p), 则称a是模p意义下的原根，归根到底就是g<sup>(P-1)</sup> = 1 (mod P)当且仅当指数为P-1的时候成立。(这里P是素数)。</font></p>
-</blockquote>
-<p><font size=4 color=blue>求法:</font><br>
-1.<strong>暴力求解</strong>：<br>
-求n的原根时，由于原根都比较小，所以我们可以将原根g从2开始枚举，判断ord<sub>n</sub> g == φ(n)?代码就不放了<br>
-2.<strong>稍快的方法</strong>：<br>
-上一个暴力的复杂度就是φ(m)*log(m)*O(g)，笑死了，在大质数的时候完全跑不动，这是oiers所不能接受的<s>要快！</s>。<br>
-容易发现：我们在枚举g的时候只要枚举与m互质的数，若不互质，那么一定不满足一一对应的条件<br>
-不过很多情况下我们要求的都是一个质数的原根，所以这个优化不常用（噗呲<br>
-3.<strong>更快的方法！</strong><br>
-在上面的代码中枚举i时发现：i不是每个都有用的。给出一个<s>玄学的</s>结论：<font color=red>枚举i只需要枚举φ(m)的因数就好了</font>证明：不会，自己问度娘。<br>
-代码：在专篇里<br>
-一般这个方法就够了复杂度就O(m)+O( m)∗O(logm)∗O(g)<br>
-还有更优化方法，也在专篇里，这里就不放了，内容有点小多TwT</p>
-<p><font size=6 color=red>扩展欧拉定理：</font><br>
-<font color=green><s>oiers</s>我从来都只记结论，不会证明。确信</font><br>
-<a href="https://www.luogu.com.cn/problem/P5091">例题</a><br>
-求a<sup>c</sup> mod m<br>
-显然，由于m和c会非常大，一般方法肯定不行<br>
-于是，扩展欧拉定理诞生了！！！<br>
-<font color=red>若gcd(a, m) == 1</font> ，即底数与模数互质时，根据欧拉定理<br>
-<img src="https://520cxy.github.io/post-images/1618299104331.png" alt="" loading="lazy"><br>
-<font color=red>若gcd(a, m) != 1 &amp;&amp; c&lt;φ(m)</font>，<s>根据扩展欧拉定理</s><br>
-<img src="https://520cxy.github.io/post-images/1618299216215.png" alt="" loading="lazy"><br>
-<font color=red>若gcd(a, m) != 1 &amp;&amp; c≥φ(m)时</font> 根据扩展欧拉定理：<br>
-<img src="https://520cxy.github.io/post-images/1618299283790.png" alt="" loading="lazy"><br>
-那么：<font size=4 color=green>馬媽再也不用担心指数爆炸啦，因为指数也能取模啦！！！</font></p>
-<p><font size=6 color=red>二次剩余和N次剩余</font><br>
-<font size=5 color=blue>二次剩余</font><br>
-<a href="https://www.luogu.com.cn/problem/P5491">例题</a><br>
-求解同余式<img src="https://520cxy.github.io/post-images/1619308559461.png" alt="" loading="lazy"><br>
-若同余式有解，我们称x是a模p意义下的二次剩余；若无解，我们称x是a模p意义下的非二次剩余<br>
-<strong>定理一：对于所求的二次同余式， 有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌊</mo></mrow><annotation encoding="application/x-tex">\lfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{p-1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.242216em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.897216em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌋</mo></mrow><annotation encoding="application/x-tex">\rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">⌋</span></span></span></span>个不同的解</strong><br>
-<strong>定理二：若<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>o</mi><mi>d</mi><mo>(</mo><mi>p</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">mod(p)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span>, p=p<sub>1</sub>p<sub>2</sub>.....p<sub>k</sub>，则有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>1</sub>),<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>2</sub>)......<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo></mrow><annotation encoding="application/x-tex">\equiv</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span></span></span></span><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> mod(p<sub>k</sub>)</strong></p>
-<p>引入<a href="https://en.wikipedia.org/wiki/Euler%27s_criterion">欧拉准则</a><br>
-这是一个用来判定的经典准则（其实勒让德符号的定义准确来说就是从这里定义的）<br>
-这里规定，当模数为奇素数的时候···（此处省略解释）<br>
-直接代入勒让德符号成为<br>
-<img src="https://520cxy.github.io/post-images/1619311696838.png" alt="" loading="lazy"></p>
-<p>对于判定模数为奇素数时，我们定义勒让德符号<br>
-<img src="https://520cxy.github.io/post-images/1619311092988.png" alt="" loading="lazy"><br>
-现在我们已经会判定了!!!tql!!!但是我们更多的是求这个值<s>大雾</s><br>
-假设我们已经判断完了，发现a是模p的二次剩余，那么其他的解也可以通过该解计算得出。</p>
 ]]></content>
     </entry>
 </feed>
