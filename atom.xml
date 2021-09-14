@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://520cxy.github.io</id>
     <title>LL.的小窝</title>
-    <updated>2021-09-04T05:02:29.953Z</updated>
+    <updated>2021-09-14T10:11:00.492Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://520cxy.github.io"/>
     <link rel="self" href="https://520cxy.github.io/atom.xml"/>
@@ -10,6 +10,33 @@
     <logo>https://520cxy.github.io/images/avatar.png</logo>
     <icon>https://520cxy.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, LL.的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[临时佛脚抱一抱]]></title>
+        <id>https://520cxy.github.io/post/lin-shi-fo-jiao-bao-yi-bao/</id>
+        <link href="https://520cxy.github.io/post/lin-shi-fo-jiao-bao-yi-bao/">
+        </link>
+        <updated>2021-09-13T00:24:45.000Z</updated>
+        <content type="html"><![CDATA[<p><font size=6><strong>9.12</strong></font><br>
+&quot;灿都&quot;台风来了，得比台风更卷/fendou<br>
+<strong>sxyzNOIP2018初赛模拟卷 错题：</strong><br>
+在物理线路上提供可靠度数据传输的是ISO/OSI参考模型的：<br>
+<font color=red><strong>数据链路层</strong></font></p>
+<p>信息论之父是指（）A.艾伦图灵 B.韦伯迪杰斯特拉 C.克劳尔香农 D.理查德费曼<br>
+<font color=red><strong>C</strong></font></p>
+<p>TCP/IP协议共有()层协议<br>
+<font color=red><strong>4</strong></font></p>
+<p><font color=red>浮点数是指用符号、尾数、基数和指数这四部分来表示的小数，存储方式为符号位、指数位、尾数部分</font></p>
+<p><font color=red>ENIAC不是第一台计算机，图灵机没有被成功造出来过</font></p>
+<p><font color=red>NPC问题指的是一个算法可以在多项式复杂度内解出并已经公认证明的问题</font></p>
+<p>4个无标号的点的无重边唔自环的无向图有()种存在欧拉回路<br>
+<font color=red>3</font><br>
+一种是四个点的简单环，一种是三个点简单环和一个孤立点，还有一种是四个孤立点<br>
+<font color=red>回路不需要经过所有点</font></p>
+<p><strong>sxyz2021CCF模拟</strong></p>
+<p>有一空栈S，对下列待进栈数据元素序列a,b,c,d,e,f依次进行：进栈，进栈，出栈，进栈，出栈进栈的操作。接着可以任意选择进栈或出栈，则最终可能出栈序列有几种？<br>
+<font color=red>已知b,c已经出栈那么对于剩下的a,d,e,f进行情况分类，限定a必须在的后出栈，那么共有9种</font></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[初赛の错题]]></title>
         <id>https://520cxy.github.io/post/chu-sai-nocuo-ti/</id>
@@ -636,47 +663,6 @@ J<sub>11</sub>、J<sub>21</sub>、J<sub>31</sub>分别表示第1、2、3个零�
 <p><font size=4>方法：</font><br>
 <font color=red>区间DP</font>，<br>
 但是要先做一个LCP（最长公共前缀）优化<s>我不会</s></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[4.2 Solution]]></title>
-        <id>https://520cxy.github.io/post/42-solution/</id>
-        <link href="https://520cxy.github.io/post/42-solution/">
-        </link>
-        <updated>2021-04-02T02:04:33.000Z</updated>
-        <content type="html"><![CDATA[<p><font size=5>T1 生成字符串</font><br>
-在模拟的时候发现，如果他给出了<font color=red>连续的n个T<sub>1</sub>操作，就是翻转n%2次</font>，而串首串尾加字符，如果加了以后翻转，就等价于反着加，我们只需要记下每次操作填补的位置最后进行操作就行；</p>
-<p><font size=5>T2 字符串查询</font><br>
-据dalao们说是线段树和树状数组的维护，<s>我也看出来了</s>，但是我没<s>马</s>码；</p>
-<p><font size=5>T3 下取整</font><br>
-只要按照题目描述的进行操作之后，存下来的数和原数比较，反正我是做了一遍<font color=red>数学的逆运算</font>就切了唔</p>
-<p><font size=5>T4 整除</font><br>
-原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_e">ABC158 E - Divisible Substring</a><br>
-思维题，有一个很特别的性质吧，我也不知道叫什么，<font color=red>比如你的s[i]%p=k, s[j]%p=k,那么，<img src="https://520cxy.github.io/post-images/1617330955337.png" alt="" loading="lazy"></font><br>
-<font color=green>所以在区间[i, j]中的数都能取，之后统计i~j中所有区间长度的区间个数累计加起来</font><br>
-还有就是要注意p=2, 5的情况需要特判，由于这俩很好判断，<font color=red>只要末尾上的数可以整除那么前面一系列数都能取</font></p>
-<p><font size=5>T5 机器人</font><br>
-原题：<a href="https://atcoder.jp/contests/abc158/tasks/abc158_f">ABC158 F - Removing Robots</a><br>
-首先这是一个DAG模型，一个机器的激活可以引起另一个的激活，这样我们根据某一机器人向能够引起爆炸的另外一个机器人连边便可以得到一张<font color=red>有向无环图</font><br>
-事实上，有向无环图我们很难建立而且很难在上面完成答案的计算；<br>
-因此题解中有一个很妙的思路：</p>
-<blockquote>
-<p>将DAG中多余的边去掉，使其变成一个树结构<br>
-我们将<strong>多于的边去掉首先需要保证的是不会影响答案的计算</strong></p>
-</blockquote>
-<p>例如(A,B),(B,C),(A,C)这三条边中我们完全可以将(A,C)去掉，因为这两条路径是等价的。<br>
-因此我们对于每一节点，只需要<font color=red>向离节点最左边位置的节点连边</font>即可。<br>
-在程序实现上，我们可以使用优先队列/栈来维护：<br>
-我们反向考虑，对于没有受到连边的节点放到一个容器使得容器的顶部位置最小。<br>
-（为了能更容易的得到连边）<br>
-若当前可以向容器的顶部连边，则连边并弹出顶部，直到不能连边为止。<br>
-<font color=green>最优我们得到了一个森林结构，我们以每一个根为起点做树形DP。<br>
-DP很很好写——xhf dalao</font><br>
-我们设f[i]表示以i为根子树的选择方案。<br>
-当i启动时，子树都需要启动，方案为1。<br>
-当i不启动时，方案为子树的f值得积<br>
-最后的答案是森林中每一个根的f值之积。<br>
-<img src="https://520cxy.github.io/post-images/1617330304397.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
